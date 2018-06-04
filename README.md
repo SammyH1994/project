@@ -18,7 +18,7 @@ This visualization aims to compare Limburg to the other provinces of the Netherl
 
 This will be accomplished by having three interactive visualizations: a map of the Netherlands that vidsualizes relative population size per province, two population pyramids that compare Limburg to a certain province that is chosen by clicking on the map, and a grouped barchart that shows the variables of a chosen topic for both Limburg and a chosen province of the map. A sketch of the visualization can be found below.
 
-<img src="https://github.com/SammyH1994/project/blob/master/doc/sketch.png" width = "550" height = "300"/>
+<img src="https://github.com/SammyH1994/project/blob/master/doc/sketch.png" />
 
 ## Pr
 
