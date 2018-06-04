@@ -1,7 +1,7 @@
 # What makes Limburg different?
 
 Sammy Heutz  
-Programmeerproject 
+Programmeerproject  
 Minor Programmeren UvA 2018  
 
 # Project Proposal
