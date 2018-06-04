@@ -3,7 +3,6 @@ Sammy Heutz
 Programmeerproject 
 Minor Programmeren UvA 2018  
 
-## Goal
 
 ## Problem Statement
 
