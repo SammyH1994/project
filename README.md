@@ -32,6 +32,7 @@ Image 1: sketch of visualization
 - The grouped bar chart shows data on a topic that is chosen using the drop-down menu, for both Limburg and the chosen province. Each topic has a few related variables. For instance, births vs deaths has information on both births and deaths, and migration background has information about the total amount of immigrants and the amount of both Western and non-Western immigrants. Again, hovering over a bar will highlight the bar and show the data in a tip.
 
 These are all features for a minimum viable product. A fourth visualization may be added later if time permits it.
+- Another extra feature will be nice transitions in all graphs when they are updated.
 
 ### Prerequisites
 
