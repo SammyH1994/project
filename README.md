@@ -29,11 +29,21 @@ Image 1: sketch of visualization
 - The population pyramid shows the population structure (per age and per gender) for Limburg and the chosen province. On hover, a certain bar will light up and the data will be shown in a d3 tip.
 - The grouped bar chart shows data on a topic that is chosen using the drop-down menu, for both Limburg and the chosen province. Each topic has a few related variables. For instance, births vs deaths has information on both births and deaths, and migration background has information about the total amount of immigrants and the amount of both Western and non-Western immigrants. Again, hovering over a bar will highlight the bar and show the data in a tip.
 
-These are all features for a minimum viable product. A fourth visualization may be added later.
+These are all features for a minimum viable product. A fourth visualization may be added later if time permits it.
 
 ## Prerequisites
 
+### Data sources
+The data that will be used is CBS data. This data will have to be transformed from CSV format to JSON format.
+[Data source:](http://statline.cbs.nl/Statweb/publication/?DM=SLNL&PA=70072ned)
 
+### External components
+- d3 tip
+- geojson/topojson
+- bootstrap
+### Similar Visualizations
+
+### Difficult components
 
 https://www.limburger.nl/cnt/dmf20180524_00062550/alarmerend-meer-baby-s-met-afwijkingen-in-limburg
 http://statline.cbs.nl
