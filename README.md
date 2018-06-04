@@ -34,8 +34,8 @@ These are all features for a minimum viable product. A fourth visualization may 
 ## Prerequisites
 
 ### Data sources
-The data that will be used is CBS data. This data will have to be transformed from CSV format to JSON format.
-[Data source:](http://statline.cbs.nl/Statweb/publication/?DM=SLNL&PA=70072ned)
+The data that will be used is CBS data. This data will have to be transformed from CSV format to JSON format.  
+[Data source](http://statline.cbs.nl/Statweb/publication/?DM=SLNL&PA=70072ned)
 
 ### External components
 - d3 tip
@@ -44,7 +44,6 @@ The data that will be used is CBS data. This data will have to be transformed fr
 ### Similar Visualizations
 
 ### Difficult components
-
-https://www.limburger.nl/cnt/dmf20180524_00062550/alarmerend-meer-baby-s-met-afwijkingen-in-limburg
-http://statline.cbs.nl
-https://www.waarstaatjegemeente.nl/
+- Figuring out how to make the population pyramid
+- Transitions
+- Using the same dataset to create different types of visualizations
