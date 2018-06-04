@@ -1,8 +1,7 @@
 # Project Proposal
 Sammy Heutz  
-Programmeerproject Minor Programmeren   
-UvA   
-2018  
+Programmeerproject 
+Minor Programmeren UvA 2018  
 
 ## Goal
 
