@@ -44,7 +44,9 @@ The data that will be used is CBS data. This data will have to be transformed fr
 
 ### Similar Visualizations
 - [Compare your country](http://www.oecd.org/statistics/compare-your-country.html).  
-This site lets you choose a topic, which you can then compare for different countries. The different topics have different visualizations. For instance, "OECD economic outlook" has a world map, but you can switch to different visualizations such as trends and rankings. This is most similar to what I want to do, but still quite different. The main similarity is that it compares different regions for a certain topic, using different visualizations. However, the implementation is very different from what I want to do. 
+This site lets you choose a topic, which you can then compare for different countries. The different topics have different visualizations. For instance, "OECD economic outlook" has a world map, but you can switch to different visualizations such as trends and rankings. This is most similar to what I want to do, but still quite different. The main similarity is that it compares different regions for a certain topic, using different visualizations. However, the implementation is very different from what I want to do.
+- [EPI Country Comparison](http://visuals.datadriven.yale.edu/countrycompare/).
+This site lets you compare a selection of countries on different variables with multiple visualizations. Although this site uses different visualizations and compares countries instead of provinces, the idea is a bit similar in that it looks at the differences between regions with regards to different factors. The implementation is again quite different from my idea.
 - [Population Pyramid](https://bl.ocks.org/borgar/b952bb581923c9993d68).  
 This is a nice example of a population pyramid. My implementation will probably be quite similar, although I would like to have two pyramids with the y axis on the far right instead of in the middle of the pyramids. 
 - [Grouped barchart](https://bl.ocks.org/mbostock/3887051).  
