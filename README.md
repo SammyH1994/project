@@ -13,8 +13,14 @@ Is Limburg, for instance, different in population structure, income, social secu
 
 This question is interesting not only for the population of Limburg (and specifically those who have or wish to start a family there), but also for potential future residents of Limburg who are trying to decide where in the Netherlands they want to settle.
 
-## Prerequisites
+## Solution
+This visualization aims to compare Limburg to the other provinces of the Netherlands with regards to several variables: population size, population structure, births and deaths, migration background, causes of death, work, income, social security, education, traffic and transport, environment, and soil use. 
 
+This will be accomplished by having three interactive visualizations: a map of the Netherlands that vidsualizes relative population size per province, two population pyramids that compare Limburg to a certain province that is chosen by clicking on the map, and a grouped barchart that shows the variables of a chosen topic for both Limburg and a chosen province of the map. A sketch of the visualization can be found below.
+
+<img src="https://github.com/SammyH1994/blob/master/doc/sketch.png" width = "550" height = "300"/>
+
+## Pr
 
 
 
