@@ -51,6 +51,8 @@ This site lets you compare a selection of countries on different variables with 
 This is a nice example of a population pyramid. My implementation will probably be quite similar, although I would like to have two pyramids with the y axis on the far right instead of in the middle of the pyramids. 
 - [Grouped barchart](https://bl.ocks.org/mbostock/3887051).  
 This is a grouped bar chart that compares the population size of different states. My implementation would have two provinces instead of different states, and will not be about population size but about a topic chosen with the drop-down menu.
+- [Map of the Netherlands](http://bl.ocks.org/phil-pedruco/9344373).
+This is a d3 map of the Netherlands, which can be useful for creating my map, especially the nld.json file.
     
 ### Difficult components
 - Figuring out how to make the population pyramid
