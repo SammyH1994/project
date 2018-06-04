@@ -41,8 +41,11 @@ The data that will be used is CBS data. This data will have to be transformed fr
 - d3 tip
 - geojson/topojson
 - bootstrap
-### Similar Visualizations
 
+### Similar Visualizations
+- [Compare your country](http://www.oecd.org/statistics/compare-your-country.html)
+    This site lets you choose a topic, which you can then compare for different countries. The different topics have different visualizations. For instance, "OECD economic outlook" has a world map, but you can switch to different visualizations such as trends and rankings. This is most similar to what I want to do, but still quite different. The main similarity is that it compares different regions for a certain topic, using different visualizations. However, the implementation is very different from what I want to do. 
+    
 ### Difficult components
 - Figuring out how to make the population pyramid
 - Transitions
