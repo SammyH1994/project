@@ -1,7 +1,10 @@
-# Project Proposal
+# What makes Limburg different?
+
 Sammy Heutz  
 Programmeerproject 
 Minor Programmeren UvA 2018  
+
+# Project Proposal
 
 ## Problem Statement
 Recently, it became known that the number of baby's born with a birth defect is alarmingly higher in Limburg than in any other province of the Netherlands: 3.84% in Limburg compared to the national average of 2.84% ([Source](https://www.limburger.nl/cnt/dmf20180524_00062550/alarmerend-meer-baby-s-met-afwijkingen-in-limburg)). 
@@ -20,7 +23,7 @@ This will be accomplished by having three interactive visualizations: a map of t
 <img src="https://github.com/SammyH1994/project/blob/master/doc/sketch.png" />
 Image 1: sketch of visualization
 
-### Visualization features
+## Visualization features
 - A year between 2005 and 2015 can be chosen using the slider. This will change all three visualizations to show the data for the respective year. If data for a certain year is unavailable, the user will be notified.
 - The map shows the relative population size per province of the Netherlands. On hover, the province will be highlighted and the percentage will be shown in a d3 tip.
 - If a province on the map is clicked, both the population pyramid and the bar chart will be updated for the chosen province. This province is then compared to Limburg in the two visualizations.
