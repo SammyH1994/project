@@ -12,18 +12,6 @@ This is done since all visualizations will show the data for a chosen year. This
 
 The CSV files will be converted to JSON format using python. However, since the CSV files that are retrieved from CBS, they will have to be preprocessed manually. When downloaded, there are multiple "header rows" per column, since most values are taken from a topic and one or more subtopics. For instance, a part of the downloaded data looks like this:
 
-	Onderwerpen	Bevolking
-	Onderwerpen	Bevolkingssamenstelling op 1 januari
-	Onderwerpen	Totale bevolking
-	Onderwerpen	Totale bevolking
-	Onderwerpen	Totale bevolking
-	Onderwerpen	Totale bevolking
-	Onderwerpen	Totale bevolking
-Regio's	Perioden	aantal
-Nederland	2015	16900726
-Groningen (PV)	2015	583942
-
-
 
 |         |Onderwerpen| Bevolking                            |
 |         |Onderwerpen| Bevolkingssamenstelling op 1 januari |
@@ -33,7 +21,6 @@ Groningen (PV)	2015	583942
 |         |Onderwerpen| Totale Bevolking                     |
 |         |Onderwerpen| Totale Bevolking                     |
 |Regio's  |Perioden   | Totale Bevolking                     |
-|---------|-----------|--------------------------------------|
 |Nederland|2006       | 16334210                             |
 |Groningen|2006       | 574042                               |
       
