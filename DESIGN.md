@@ -14,7 +14,7 @@ In addition, there is a lot of data on various subjects, for 10 years. Since all
 
 ## Components
 
-|             |Function Name |Description     | Filename               | 
+|Function Name            |Description     | Filename               | 
 |-------------|-----------|-----------------------|--------------------------------------------|
 |***Map***|           |                       |                                            |      
 |            |544        |541                    |4: **100%**                                 | 
