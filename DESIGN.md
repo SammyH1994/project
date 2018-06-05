@@ -14,22 +14,22 @@ In addition, there is a lot of data on various subjects, for 10 years. Since all
 
 ## Components
 
-|Function Name           |Description     | Filename               | 
-|------------------------|-----------|-----------------------|
-|***Map***               |           |                       |                                                  
-|createMap               |544        |541                    | 
-|updateMap               |564        |542                    |
-|                        |           |                       |                                             
-|***Population Pyramid***|           |                       |                                             
-|createPyramid           |625        |624                    | 
-|updatePyramid           |648        |629                    |
-|                        |           |                       |                                            
-|***Bar chart***         |           |                       |                                            
-|createBarchart          |1141       |1125                   | 
-|updateBarchart          |1212       |1146                   |
-|                        |           |                       |                                            
-|***General functions*** |          |                       |                                             
-|getProvinceData         |1714       |1683                   |
-|                        |           |                       |                                            
+|Function Name           |Description                             | Filename              | 
+|------------------------|----------------------------------------|-----------------------|
+|***Map***               |                                        |                       |                                                 
+|createMap               |creates the initial map                 |541                    | 
+|updateMap               |updates the map                         |542                    |
+|                        |                                        |                       |                                             
+|***Population Pyramid***|                                        |                       |                                             
+|createPyramid           |creates the initial population pyramid  |624                    | 
+|updatePyramid           |updates the population pyramid          |629                    |
+|                        |                                        |                       |                                            
+|***Bar chart***         |                                        |                       |                                            
+|createBarchart          |creates the initial bar chart           |1125                   | 
+|updateBarchart          |updates the bar chart                   |1146                   |
+|                        |                                        |                       |                                            
+|***General functions*** |                                        |                       |                                             
+|getProvinceData         |retrieves the data for a chosen province|1683                   |
+                                          
 Table 1: Diagram with components
 ## Plugins
