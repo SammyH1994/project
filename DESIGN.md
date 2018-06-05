@@ -30,7 +30,7 @@ In addition, there is a lot of data on various subjects, for 10 years. Since all
 |updateBarchart          |updates the bar chart                                              |barchart.js|
 |                        |                                                                   |           |                               
 |***General functions*** |                                                                   |           |                               
-|getProvinceData         |retrieves the data for a chosen province                           |data.js    |
+|getProvinceData (Optional)|retrieves the data for a chosen province                           |data.js    |
 |***Event listeners***   |                                                                   |           |
 |onClick                 |will update the visualizations when the map is clicked             |index.js   |
 |onSelect                |will update the bar chart on dropdown selection                    |index.js   |
@@ -50,6 +50,9 @@ Subsequently, a few events can happen:
 1. a province on the map is clicked. This will call the onClick function, which will retrieve the required data using the getProvinceData function, and will then update the pyramid and barchart using the updatePyramid and updateBarchart functions.
 2. a year is chosen using the slider. This will call the onSlide function, which will again retrieve the date using getProvinceData and create all visualizations using createMap, createPyramid, createBarchart.
 3. a bar chart topic is chosen using the drop down menu. From the current data, the date from the selected topic will be retrieved, after which the bar chart will be updated using the updateBarchart function.
+4. the user hovers over a datapoint of one of the visualizations. Using d3tip, a tooltip will be created. This is part of the functions that create/update the visualizations.
+
+Note: the getProvinceData function is optional. It may not be necessary to have a separate function to retrieve a province's data. This will depend on possible duplicate code.
 
 ## Plugins/libraries
 Required:
