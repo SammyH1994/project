@@ -24,11 +24,41 @@ The CSV files will be converted to JSON format using python. However, since the 
 |Regio's  |Perioden   | Totale Bevolking                     |
 |Nederland|2006       | 16334210                             |
 |Groningen|2006       | 574042                               |
-      
 
-In order to use the data for my visualizations, it will be converted to JSON format using a python script.
-However, since the CSV data is not in the correct format to be transformed to an easily usable JSON file, the data has to be rearranged.
-In addition, there is a lot of data on various subjects, for 10 years. Since all visualizations will show data for a chosen year, I have decided to create a JSON file for each year, in order to make searching through the files for a certain topic a bit more efficient. Thus, I will have 10 CSV files which will then be converted to JSON format.
+Table 1: example CBS CSV data.
+
+Therefore, before the data is converted to JSON, the CSV data (file per year) is changed to the following format:
+
+|province |population/total|
+|---------|----------------|
+|Nederland|16334210        |
+|Groningen|574042          |
+
+Now, there is only one header, which contains information about the category and the subcategory. Each topic (except province, which does not have a subcategory) has subtopics one maximally one level deep. The subtopic is separated by a slash (/).
+
+These CSV files will then be transformed to JSON files using  a python script. The structure will be as follows:
+
+```javascript
+{"data_2006":
+[
+      {
+            "province": "Nederland",
+            "population": {
+                  "total": "16334210",
+                  "male": "8077407",
+                  female: "8256803",
+                  etc...
+                  },
+            "migration": {
+                  "dutch": "80.7",
+                  "non-dutch": "19.3",
+                  "western": "8.7",
+                  "non-western": "10.5"
+                  },
+            etc....
+      }
+]}
+```
 
 ## Components
 
