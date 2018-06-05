@@ -21,17 +21,15 @@ In addition, there is a lot of data on various subjects, for 10 years. Since all
 |updateMap               |564        |542                    |
 |                        |           |                       |                                             
 |***Population Pyramid***|           |                       |                                             
-|    createPyramid        |625        |624                    | 
-|    updatePyramid        |648        |629                    |
-|                         |           |                       |                                            
-|***Bar chart***          |           |                       |                                            
-|     createBarchart      |1141       |1125                   | 
-|     updateBarchart      |1212       |1146                   |
-|             |           |                       |                                            
+|createPyramid           |625        |624                    | 
+|updatePyramid           |648        |629                    |
+|                        |           |                       |                                            
+|***Bar chart***         |           |                       |                                            
+|createBarchart          |1141       |1125                   | 
+|updateBarchart          |1212       |1146                   |
+|                        |           |                       |                                            
 |***General functions*** |          |                       |                                             
-|            |1714       |1683                   |
-|            |1848       |1743                   |
-|            |2028       |1827                   |
-|             |           |                       |                                            
+|getProvinceData         |1714       |1683                   |
+|                        |           |                       |                                            
 Table 1: Diagram with components
 ## Plugins
