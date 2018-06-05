@@ -12,16 +12,6 @@ This is done since all visualizations will show the data for a chosen year. This
 
 The CSV files will be converted to JSON format using python. However, since the CSV files that are retrieved from CBS, they will have to be preprocessed manually. When downloaded, there are multiple "header rows" per column, since most values are taken from a topic and one or more subtopics. For instance, a part of the downloaded data looks like this:
 
-Bevolking
-Bevolkingssamenstelling op 1 januari
-Geslacht
-Mannen
-Mannen
-Mannen
-Mannen
-aantal
-
-
 |Regionale kerncijfers Nederland|           |                |                                     |
 |---------|-----------|--------------------------------------|-------------------------------------|
 |         |Onderwerpen| Bevolking                            | Bevolking                           |
@@ -41,8 +31,10 @@ Therefore, before the data is converted to JSON, the CSV data (file per year) is
 
 |province |population/total|population/male|
 |---------|----------------|---------------|
-|Nederland|16334210        |8077407
-|Groningen|574042          |285089
+|Nederland|16334210        |8077407        |
+|Groningen|574042          |285089         |
+
+Table 2: Example adjusted CSV data.
 
 Now, there is only one header, which contains information about the category and the subcategory. Each topic (except province, which does not have a subcategory) has subtopics one maximally one level deep. The subtopic is separated by a slash (/).
 
@@ -94,7 +86,7 @@ These CSV files will then be transformed to JSON files using  a python script. T
 |onSelect                |will update the bar chart on dropdown selection                    |index.js   |
 |onSlide                 |will update the visualizations when a year is chosen via the slider|index.js   |
                                           
-Table 1: Diagram with components
+Table 3: Diagram with components
 
 ### Program flow
 - index.html is the main html file that will create the webpage.  
@@ -111,6 +103,12 @@ Subsequently, a few events can happen:
 4. the user hovers over a datapoint of one of the visualizations. Using d3tip, a tooltip will be created. This is part of the functions that create/update the visualizations.
 
 Note: the getProvinceData function is optional. It may not be necessary to have a separate function to retrieve a province's data. This will depend on possible duplicate code.
+
+### Sketch with functions
+Below you can find the updated sketch with the functions that handle events.
+
+<img src="https://github.com/SammyH1994/project/blob/master/doc/sketch_functions.png" />
+Image 1: sketch of visualization with functions
 
 ## Plugins/libraries
 Required:
