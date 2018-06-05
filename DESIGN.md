@@ -14,24 +14,33 @@ In addition, there is a lot of data on various subjects, for 10 years. Since all
 
 ## Components
 
-|Function Name           |Description                             | Filename              | 
-|------------------------|----------------------------------------|-----------------------|
-|***Map***               |                                        |                       |                                             
-|createMap               |creates the initial map                 |map.js                 | 
-|updateMap               |updates the map                         |map.js                 |
-|                        |                                        |                       |                                             
-|***Population Pyramid***|                                        |                       |                                             
-|createPyramid           |creates the initial population pyramid  |pyramid.js             | 
-|updatePyramid           |updates the population pyramid          |pyramid.js             |
-|                        |                                        |                       |                                            
-|***Bar chart***         |                                        |                       |                                            
-|createBarchart          |creates the initial bar chart           |barchart.js            | 
-|updateBarchart          |updates the bar chart                   |barchart.js            |
-|                        |                                        |                       |                                            
-|***General functions*** |                                        |                       |                                             
-|getProvinceData         |retrieves the data for a chosen province|data.js                |
+### Function diagram
+|Function Name           |Description                                                        |Filename   | 
+|------------------------|-------------------------------------------------------------------|-----------|
+|***Map***               |                                                                   |           |                               
+|createMap               |creates the initial map                                            |map.js     | 
+|updateMap               |updates the map                                                    |map.js     |
+|                        |                                                                   |           |                               
+|***Population Pyramid***|                                                                   |           |                               
+|createPyramid           |creates the initial population pyramid                             |pyramid.js | 
+|updatePyramid           |updates the population pyramid                                     |pyramid.js |
+|                        |                                                                   |           |                               
+|***Bar chart***         |                                                                   |           |                               
+|createBarchart          |creates the initial bar chart                                      |barchart.js| 
+|updateBarchart          |updates the bar chart                                              |barchart.js|
+|                        |                                                                   |           |                               
+|***General functions*** |                                                                   |           |                               
+|getProvinceData         |retrieves the data for a chosen province                           |data.js    |
+|***Event listeners***   |                                                                   |           |
+|onClick                 |will update the visualizations when the map is clicked             |index.js   |
+|onSelect                |will update the bar chart on dropdown selection                    |index.js   |
+|onSlide                 |will update the visualizations when a year is chosen via the slider|index.js   |
                                           
 Table 1: Diagram with components
 
+### Program flow
+- index.html: will call style.css, 
 
-## Plugins
+
+
+## Plugins/libraries
