@@ -39,8 +39,25 @@ In addition, there is a lot of data on various subjects, for 10 years. Since all
 Table 1: Diagram with components
 
 ### Program flow
-- index.html: will call style.css, 
-
-
+- index.html is the main html file that will create the webpage.  
+It will also call style.css, all scripts and plugins.  
+- index.js is the main script that will contain the flow of the program  
+It will first load the data per year (10 json files) when the window is loaded (onload function) using D3 queue.  
+Then (callback function) it will create the initial state of the visualization. It will first get the necessary data (Limburg and the Netherlands) with getProvinceDate. Then it will create the visualizations using createMap, createPyramid and createBarchart.  
+Subsequently, a few events can happen:
+1. a province on the map is clicked. This will call the onClick function, which will retrieve the required data using the getProvinceData function, and will then update the pyramid and barchart using the updatePyramid and updateBarchart functions.
+2. a year is chosen using the slider. This will call the onSlide function, which will again retrieve the date using getProvinceData and create all visualizations using createMap, createPyramid, createBarchart.
+3. a bar chart topic is chosen using the drop down menu. From the current data, the date from the selected topic will be retrieved, after which the bar chart will be updated using the updateBarchart function.
 
 ## Plugins/libraries
+Required:
+- d3 tip
+- d3 queue
+- d3 container
+- d3 collections
+- d3 legend
+- topoJSON/datamaps
+- bootstrap
+
+Optional:
+- d3 scale-chromatic
