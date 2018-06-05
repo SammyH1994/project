@@ -48,7 +48,7 @@ These CSV files will then be transformed to JSON files using  a python script. T
             "population": {
                   "total": "16334210",
                   "male": "8077407",
-                  female: "8256803",
+                  "female": "8256803",
                   etc...
                   },
             "migration": {
