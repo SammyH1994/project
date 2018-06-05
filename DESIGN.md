@@ -25,7 +25,7 @@ The CSV files will be converted to JSON format using python. However, since the 
 |Nederland|2006       | 16334210                             | 8077407                             |
 |Groningen|2006       | 574042                               | 285089                              |
 
-Table 1: example CBS CSV data.
+Table 1: excerpt CBS CSV data 2006.
 
 Therefore, before the data is converted to JSON, the CSV data (file per year) is changed to the following format:
 
@@ -34,11 +34,11 @@ Therefore, before the data is converted to JSON, the CSV data (file per year) is
 |Nederland|16334210        |8077407        |
 |Groningen|574042          |285089         |
 
-Table 2: Example adjusted CSV data.
+Table 2: excerpt adjusted CSV data 2006.
 
 Now, there is only one header, which contains information about the category and the subcategory. Each topic (except province, which does not have a subcategory) has subtopics one maximally one level deep. The subtopic is separated by a slash (/).
 
-These CSV files will then be transformed to JSON files using  a python script. The structure will be as follows:
+These CSV files will then be transformed to JSON files using  a python script. The headers will be split on the slash so that sub-dictionarys can be created per main topic. The structure will be as follows:
 
 ```javascript
 {"data_2006":
