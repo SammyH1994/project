@@ -6,7 +6,7 @@
 import json
 import csv
 
-name = "data2"
+name = "data_2006"
 file = name + ".csv"
 json_file = name + ".json"
 
