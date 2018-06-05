@@ -12,27 +12,37 @@ This is done since all visualizations will show the data for a chosen year. This
 
 The CSV files will be converted to JSON format using python. However, since the CSV files that are retrieved from CBS, they will have to be preprocessed manually. When downloaded, there are multiple "header rows" per column, since most values are taken from a topic and one or more subtopics. For instance, a part of the downloaded data looks like this:
 
-|Regionale kerncijfers Nederland|           |                |
-|---------|-----------|--------------------------------------|
-|         |Onderwerpen| Bevolking                            |
-|         |Onderwerpen| Bevolkingssamenstelling op 1 januari |
-|         |Onderwerpen| Totale Bevolking                     |
-|         |Onderwerpen| Totale Bevolking                     |
-|         |Onderwerpen| Totale Bevolking                     |
-|         |Onderwerpen| Totale Bevolking                     |
-|         |Onderwerpen| Totale Bevolking                     |
-|Regio's  |Perioden   | Totale Bevolking                     |
-|Nederland|2006       | 16334210                             |
-|Groningen|2006       | 574042                               |
+Bevolking
+Bevolkingssamenstelling op 1 januari
+Geslacht
+Mannen
+Mannen
+Mannen
+Mannen
+aantal
+
+
+|Regionale kerncijfers Nederland|           |                |                                     |
+|---------|-----------|--------------------------------------|                                     |
+|         |Onderwerpen| Bevolking                            | Bevolking                           |
+|         |Onderwerpen| Bevolkingssamenstelling op 1 januari | Bevolkingssamenstelling op 1 januari|
+|         |Onderwerpen| Totale Bevolking                     | Geslacht                            |
+|         |Onderwerpen| Totale Bevolking                     | Mannen                              |
+|         |Onderwerpen| Totale Bevolking                     | Mannen                              |
+|         |Onderwerpen| Totale Bevolking                     | Mannen                              |
+|         |Onderwerpen| Totale Bevolking                     | Mannen                              |
+|Regio's  |Perioden   | Aantal                               | Aantal                              |
+|Nederland|2006       | 16334210                             | 8077407                             |
+|Groningen|2006       | 574042                               | 285089                              |
 
 Table 1: example CBS CSV data.
 
 Therefore, before the data is converted to JSON, the CSV data (file per year) is changed to the following format:
 
-|province |population/total|
-|---------|----------------|
-|Nederland|16334210        |
-|Groningen|574042          |
+|province |population/total|population/male|
+|---------|----------------|---------------|
+|Nederland|16334210        |8077407
+|Groningen|574042          |285089
 
 Now, there is only one header, which contains information about the category and the subcategory. Each topic (except province, which does not have a subcategory) has subtopics one maximally one level deep. The subtopic is separated by a slash (/).
 
@@ -55,7 +65,7 @@ These CSV files will then be transformed to JSON files using  a python script. T
                   "western": "8.7",
                   "non-western": "10.5"
                   },
-            etc....
+            etc...
       }
 ]}
 ```
