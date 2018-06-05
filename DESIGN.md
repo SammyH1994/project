@@ -23,7 +23,7 @@ aantal
 
 
 |Regionale kerncijfers Nederland|           |                |                                     |
-|---------|-----------|--------------------------------------|                                     |
+|---------|-----------|--------------------------------------|-------------------------------------|
 |         |Onderwerpen| Bevolking                            | Bevolking                           |
 |         |Onderwerpen| Bevolkingssamenstelling op 1 januari | Bevolkingssamenstelling op 1 januari|
 |         |Onderwerpen| Totale Bevolking                     | Geslacht                            |
