@@ -16,20 +16,22 @@ In addition, there is a lot of data on various subjects, for 10 years. Since all
 
 |Function Name           |Description                             | Filename              | 
 |------------------------|----------------------------------------|-----------------------|
-|***Map***               |                                        |                       |                                                 
-|createMap               |creates the initial map                 |541                    | 
-|updateMap               |updates the map                         |542                    |
+|***Map***               |                                        |                       |                                             
+|createMap               |creates the initial map                 |map.js                 | 
+|updateMap               |updates the map                         |map.js                 |
 |                        |                                        |                       |                                             
 |***Population Pyramid***|                                        |                       |                                             
-|createPyramid           |creates the initial population pyramid  |624                    | 
-|updatePyramid           |updates the population pyramid          |629                    |
+|createPyramid           |creates the initial population pyramid  |pyramid.js             | 
+|updatePyramid           |updates the population pyramid          |pyramid.js             |
 |                        |                                        |                       |                                            
 |***Bar chart***         |                                        |                       |                                            
-|createBarchart          |creates the initial bar chart           |1125                   | 
-|updateBarchart          |updates the bar chart                   |1146                   |
+|createBarchart          |creates the initial bar chart           |barchart.js            | 
+|updateBarchart          |updates the bar chart                   |barchart.js            |
 |                        |                                        |                       |                                            
 |***General functions*** |                                        |                       |                                             
-|getProvinceData         |retrieves the data for a chosen province|1683                   |
+|getProvinceData         |retrieves the data for a chosen province|data.js                |
                                           
 Table 1: Diagram with components
+
+
 ## Plugins
