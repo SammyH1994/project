@@ -38,7 +38,7 @@ These are all features for a minimum viable product. A fourth visualization may 
 
 #### Data sources
 The data that will be used is CBS regional data. This data will have to be transformed from CSV format to JSON format.  
-[Data source](http://statline.cbs.nl/Statweb/publication/?DM=SLNL&PA=70072ned)
+[Data source](https://opendata.cbs.nl/statline/#/CBS/nl/dataset/70072ned/table?ts=1528142338597)
 
 #### External components
 - d3 tip
