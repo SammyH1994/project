@@ -14,22 +14,19 @@ In addition, there is a lot of data on various subjects, for 10 years. Since all
 
 ## Components
 
-|Function Name            |Description     | Filename               | 
-|-------------|-----------|-----------------------|
-|***Map***|           |                       |                                                  
-|            |544        |541                    | 
-|            |564        |542                    |
-|            |597        |542                    |
+|Function Name  |Description     | Filename               | 
+|---------------|-----------|-----------------------|
+|***Map***      |           |                       |                                                  
+|  createMap    |544        |541                    | 
+|    updateMap        |564        |542                    |
 |             |           |                       |                                             
 |***Population Pyramid***  |           |                       |                                             
-|            |625        |624                    | 
-|            |648        |629                    |
-|            |710        |627                    |
+|    createPyramid        |625        |624                    | 
+|    updatePyramid        |648        |629                    |
 |             |           |                       |                                            
 |***Bar chart***     |           |                       |                                            
-|            |1141       |1125                   | 
-|            |1212       |1146                   |
-|            |1325       |1155                   |
+|     createBarchart       |1141       |1125                   | 
+|     updateBarchart       |1212       |1146                   |
 |             |           |                       |                                            
 |***General functions*** |          |                       |                                             
 |            |1714       |1683                   |
