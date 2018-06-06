@@ -10,7 +10,7 @@ I will either use the nld.json file from [this D3 visualization](http://bl.ocks.
 The data from CBS can be downloaded as a CSV file. 10 files will be downloaded, one for each year (2006-2015).  
 This is done since all visualizations will show the data for a chosen year. This will make searching through the files for a certain topic for a certain year a bit more efficient.  
 
-The CSV files will be converted to JSON format using python. However, since the CSV files that are retrieved from CBS, they will have to be preprocessed manually. When downloaded, there are multiple "header rows" per column, since most values are taken from a topic and one or more subtopics. For instance, a part of the downloaded data looks like this:
+The CSV files will be converted to JSON format using python. However, since the CSV files that are retrieved from CBS are not in a format that is easily converted to JSON, they will have to be preprocessed manually. When downloaded, there are multiple "header rows" per column, since most values are taken from a topic and one or more subtopics. For instance, a part of the downloaded data looks like this:
 
 |Regionale kerncijfers Nederland|           |                |                                     |
 |---------|-----------|--------------------------------------|-------------------------------------|
@@ -36,9 +36,9 @@ Therefore, before the data is converted to JSON, the CSV data (file per year) is
 
 Table 2: excerpt adjusted CSV data 2006.
 
-Now, there is only one header, which contains information about the category and the subcategory. Each topic (except province, which does not have a subcategory) has subtopics one maximally one level deep. The subtopic is separated by a slash (/).
+Now, there is only one header, which contains information about the topic and the subtopic. Each topic (except province, which does not have a subcategory) has subtopics one maximally one level deep. The subtopic is separated by a slash (/).
 
-These CSV files will then be transformed to JSON files using  a python script. The headers will be split on the slash so that sub-dictionarys can be created per main topic. The structure will be as follows:
+These CSV files will then be transformed to JSON files using  a python script (convertCSV2JSON.py. The headers will be split on the slash so that sub-dictionarys can be created per main topic. The structure will be as follows:
 
 ```javascript
 {"data_2006":
