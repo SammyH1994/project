@@ -1,7 +1,7 @@
 # Process
 ## Week 1
 ### Day 1
-Searched data, thought out idea, created sketch, wrote proposal
+Searched for the needed data, created sketch, wrote proposal
 
 ### Day 2
 Worked on Design, adjusted CSV files, started on adapting convertCSV2JSON.py to be able to have nested JSON with topics and subtopics
