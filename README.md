@@ -4,6 +4,8 @@ Sammy Heutz
 Programmeerproject  
 Minor Programmeren UvA 2018  
 
+[Pages](index.html)
+
 ## Project Proposal
 
 ### Problem Statement
