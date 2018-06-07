@@ -11,7 +11,7 @@ Recently, it became known that the number of baby's born with a birth defect is 
 
 This raises the question of how Limburg is different from other provinces in the Netherlands, and what the potential reasons for this difference in the number of baby's born with a birth defect are. 
 
-Is Limburg, for instance, different in population structure, income, social security, environment, or any other factor?
+Is Limburg, for instance, different in population structure, income, social security, or any other factor?
 
 This question is interesting not only for the population of Limburg (and specifically those who have or wish to start a family there), but also for potential future residents of Limburg who are trying to decide where in the Netherlands they want to settle.
 
