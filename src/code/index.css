@@ -103,12 +103,13 @@ body{
     background: red; /* Green background */
     cursor: pointer; /* Cursor on hover */
     	box-shadow: 1px 1px 1px 2px rgb(105,105,105);
+    	 border-radius: 5px;
 }
 
 .slider::-moz-range-thumb {
     width: 25px; /* Set a specific slider handle width */
     height: 25px; /* Slider handle height */
-    background: #4CAF50; /* Green background */
+    background: red; /* Green background */
     cursor: pointer; /* Cursor on hover */
 }
 

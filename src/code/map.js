@@ -22,7 +22,7 @@ var projection = d3.geo.albers()
     // .center([5, 52])
     // .rotate([0, 0])
     // .parallels([50, 60])
-    .scale(1000)
+    .scale(10000)
     .translate([width / 2, height / 2]);
 
     var path = d3.geo.path()
