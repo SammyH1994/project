@@ -4,7 +4,7 @@ Sammy Heutz
 Programmeerproject  
 Minor Programmeren UvA 2018  
 
-[Pages](https://SammyH1994.github.io/project/index.html)
+[Pages](https://SammyH1994.github.io/project)
 
 ## Project Proposal
 
