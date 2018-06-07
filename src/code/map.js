@@ -19,7 +19,7 @@ function createMap(nld){
         .attr("height", "100%");
 
 
-var subunits = topojson.feature(nld, nld.objects.feature);
+// var subunits = topojson.feature(nld, nld.objects.feature);
 
 var projection = d3.geo.albers()
     .center([5, 52])
@@ -32,7 +32,7 @@ var projection = d3.geo.albers()
     .projection(projection);
 
     svg.append("path")
-    .datum(subunits)
+    .datum(nld.features)
     .attr("d", path);
 
 }
