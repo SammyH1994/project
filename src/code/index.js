@@ -31,11 +31,11 @@ window.onload = function() {
 	function callback(error, data2006, data2007, data2008, data2009, data2010, data2011, data2012, data2013, data2014, data2015, nld) {
 	if (error) throw error;
 
-	console.log(data2006);
-	console.log(data2006.data_2006["0"].population.female);
+
+	datatest = data2010.data_2010
 
 
-	createMap(nld);
+	createMap(nld, datatest, "2010");
 
 
 
@@ -44,7 +44,29 @@ var output = document.getElementById("year");
 output.innerHTML = slider.value;
 
 slider.oninput = function() {
-  output.innerHTML = this.value;
+	year = this.value
+  	output.innerHTML = year
+
+  	var years = {
+  		"2006": data2006.data_2006,
+  		"2007": data2007.data_2007,
+  		"2008": data2008.data_2008,
+  		"2009": data2009.data_2009,
+  		"2010": data2010.data_2010,
+  		"2011": data2011.data_2011,
+  		"2012": data2012.data_2012,
+  		"2013": data2013.data_2013,
+  		"2014": data2014.data_2014,
+  		"2015": data2015.data_2015,
+
+
+  	}
+
+  	data = years[year]
+  	document.getElementById("container").innerHTML = "";
+  	createMap(nld, data, year)
+
+
 }
 
 }
