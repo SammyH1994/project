@@ -21,8 +21,19 @@
 - Finished prototype
 - Started on map
 
+### Day 5 
+- Presented idea
+
 ## Week 2
+### Day 1
+- Worked on map
+
+### Day 2
+- Map: data with values for population
+- Map: colours with values for population
+- Issue: population doesn't change much over years
 
 ## Week 3
+
 
 ## Week 4
