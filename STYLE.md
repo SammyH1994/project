@@ -29,3 +29,9 @@ Closing brackets are placed on a separate line.
 
 ## Line length
 Lines longer than 80 characters are avoided where possible.
+
+## Authors
+Sammy Heutz
+Sebile Demirtas
+Sylvie Langhout
+Sjoerd Zagema
