@@ -1,5 +1,5 @@
 # Style Guide
-Based on W3 schools
+Based on [W3 schools](https://www.w3schools.com/js/js_conventions.asp).
 
 ## Headers
 Headers are multi-line comments.  
