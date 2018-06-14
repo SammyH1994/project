@@ -7,7 +7,7 @@ Each header starts with the author's name and student number, followed by a desc
 
 ## Variable names
 All variables are in camelCase, with variable names starting with a letter.  
-Global variabels are written in UPPERCASE.
+'''
 
 ## Operators
 All operators (+, -, etc) are encased by spaces. Each comma is followed by a space.
