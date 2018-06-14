@@ -31,12 +31,10 @@ function createMap(nld, data, year){
         .attr("id", "subtitle")
         .text("Total population: " + data["0"].population.total)
 
-var colorScheme =  d3.schemeGnBu[8]
 
-
-    var color = d3.scaleThreshold()
-        .range(colorScheme)
-        .domain([0, 500000, 1000000, 1500000, 2000000, 2500000, 3000000, 3500000])
+    var color = d3.scaleLinear()
+        .range(["#b5f2d2", "#008545"])
+        .domain([100000, 4000000])
 
 
     var projection = d3.geoMercator()
@@ -51,21 +49,23 @@ var colorScheme =  d3.schemeGnBu[8]
         .append("div")
         .attr("class", "tooltip hidden")
 
-
     // create tooltip
     function createTooltip(d) {
+        var population = getPopulation(d.properties.name)
 
-      var hoverInfo = d3.mouse(svg.node())
+        var hoverInfo = d3.mouse(svg.node())
         .map( function(d) { return parseInt(d); } );
          toolTip.classed("hidden", false)
         .attr("style", "left:"+(hoverInfo[0]+10)+"px;top:"+(hoverInfo[1]+10)+"px")
-        .html("Province: "+ d.properties.name + "</br> Population: " + getPopulation(d.properties.name)
-        )
+        .html("Province: "+ d.properties.name + "</br> Population: " + population)
     }
 
 
     // misschien aanpassen voor andere data soorten!! 
     function getPopulation(province){
+        // console.log(province)
+        // console.log(topic)
+        // console.log(subtopic)
         for (var i = 0; i < data.length; i++){
             if (data[i].province == province){
                 return data[i].population.total
@@ -74,6 +74,7 @@ var colorScheme =  d3.schemeGnBu[8]
     }
 
 
+    // console.log(getPopulation("Limburg", "population", "total"))
 
     svg.selectAll("path")
     .data(nld.features)
@@ -89,14 +90,20 @@ var colorScheme =  d3.schemeGnBu[8]
         .on("mouseout",  function(d,i) {
         toolTip.classed("hidden", true);
         })
-        // .on("click", function(d){
-        //     console.log(d.properties.name)
-        // })
+        .on("click", function(d){
+            var province = d.properties.name
+            if (province === "Limburg"){
+                province = "Nederland"
+         }
+            provinceDataOne = getProvinceData(data, "Limburg")
+            provinceDataTwo = getProvinceData(data, province)
+            updatePyramid(provinceDataOne, provinceDataTwo, province)
+        })
 
 }
 
 
 function updateMap()
 {
-    
+
 }

@@ -36,6 +36,9 @@ window.onload = function() {
 
 
 	createMap(nld, datatest, "2010");
+	var provinceDataOne = getProvinceData(datatest, "Limburg")
+	var provinceDataTwo = getProvinceData(datatest, "Nederland")
+	createPyramid(provinceDataOne, provinceDataTwo, "Nederland");
 
 
 
@@ -65,6 +68,10 @@ slider.oninput = function() {
   	data = years[year]
   	document.getElementById("container").innerHTML = "";
   	createMap(nld, data, year)
+
+  	provinceDataOne = getProvinceData(data, "Limburg")
+  	provinceDataTwo = getProvinceData(data, "Nederland")
+  	updatePyramid(provinceDataOne, provinceDataTwo, "Nederland")
 
 
 }
