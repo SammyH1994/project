@@ -22,6 +22,13 @@ Example
 ```javascript
 var camelCase = "camel";
 ```
+## Comments
+Single comment lines start with //. They start with capital case but do not end with punctuation
+
+Example
+```javascript
+// This is a comment
+```
 
 ## Operators
 All operators (+, -, etc) are encased by spaces. Each comma is followed by a space.
