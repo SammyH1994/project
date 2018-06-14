@@ -30,7 +30,7 @@ Example
 ```javascript
 
 var x = 10, y = 15;
-for (var i = 0; i < data.length; i++){
+for (var i = 0; i < data.length; i++){ 
     var z = (x + y) * i;
 }
 ```
@@ -55,10 +55,10 @@ Functions, if statements or for loops are **not** followed by a semicolon.
 Example
 ```javascript
 function multiplyByTen(array){
-  for (var i = 0; i < array.length; i++){
-    array[i] *= 10;
-  }
-  return array;
+    for (var i = 0; i < array.length; i++){
+        array[i] *= 10;
+    }
+    return array;
 }
 
 ```
