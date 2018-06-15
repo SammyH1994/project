@@ -40,6 +40,11 @@
 Solution right now: instead of two pyramids, have one pyramid, where the left side of pyramid is Limburg, right side is province X.  
 Possible other solution: find data per gender. However, this data is per age instead of age group, so would have to be rewritten first.
 
+### Day 4
+- Worked on legend, issue with axis
+- Population pyramid finished: still thinking about whether to change data
+- Started on bar chart: working but not interactive yet and no linking.
+
 
 ## Week 3
 
