@@ -31,7 +31,7 @@ barData.forEach(function(d) {
 
  
 var color = d3.scaleOrdinal()
-    .range(["#d9f2d9", "#c6ecc6", "#b3e6b3", "#9fdf9f", " #8cd98c", "#79d279"]);
+    .range(["#fbb4ae", "#b3cde3", "#ccebc5", "#decbe4", " #fed9a6"]);
 
 var svg = d3.select("#container3").append("svg")
     .attr("width", width + margin.left + margin.right)

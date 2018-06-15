@@ -90,10 +90,10 @@ var svg = d3.select('#container2').append('svg')
 					"</span></br><strong>Percentage:</strong> <span style='color:red'>" + d.provinceTwo + "</span>";})
 
 
-    // var tipSvg = d3.select("body")
-    // .append("svg")
-    // .attr("width", w)
-    // .attr("height", h);
+    var tipSvg = d3.select("body")
+    .append("svg")
+    .attr("width", w)
+    .attr("height", h);
    svg.call(tipLeft);
   svg.call(tipRight);
 
