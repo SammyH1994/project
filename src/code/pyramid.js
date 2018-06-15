@@ -16,16 +16,12 @@ var pointA = regionWidth,
     pointB = w - regionWidth;
 
 
+var format = (d3.format(".3s"))
+
+
 function createPyramid(provinceDataOne, provinceDataTwo, provinceTwo){
 
 
-var array = [1, 2, 3]
-
-for (var i = 0; i<array.length; i++){
-	array[i] *= 10
-}
-
-console.log(array)
 
 // transform data to correct format
 populationData = [
@@ -71,19 +67,19 @@ var svg = d3.select('#container2').append('svg')
     var leftProvince = d3.select("#container2")
         .append("text")
         .attr("id", "leftProvince")
-        .text("Limburg, total population: " + provinceDataOne.population.total);
+        .text("Limburg, total population: " + format(provinceDataOne.population.total));
 
     rightProvince = d3.select("#container2")
     	.append("text")
     	.attr("id", "rightProvince")
-    	.text(provinceTwo + ", total population: " + provinceDataTwo.population.total)
+    	.text(provinceTwo + ", total population: " + format(provinceDataTwo.population.total));
 
 
 
     var tipLeft = d3.tip()
       .attr("class", "d3-tip")
       .offset([-8, 0])
-      .html(function(d) {					return "<strong>Age Group:</strong>    // var rightProvince = d3.so <span style='color:red'>" + d.group + 
+      .html(function(d) {					return "<strong>Age Group:</strong> <span style='color:red'>" + d.group + 
 					"</span></br><strong>Percentage:</strong> <span style='color:red'>" + d["Limburg"] + "</span>";});
 
 
@@ -92,8 +88,14 @@ var svg = d3.select('#container2').append('svg')
       .offset([-8, 0])
       .html(function(d) {					return "<strong>Age Group:</strong> <span style='color:red'>" + d.group + 
 					"</span></br><strong>Percentage:</strong> <span style='color:red'>" + d.provinceTwo + "</span>";})
-    svg.call(tipLeft);
-    svg.call(tipRight);
+
+
+    // var tipSvg = d3.select("body")
+    // .append("svg")
+    // .attr("width", w)
+    // .attr("height", h);
+   svg.call(tipLeft);
+  svg.call(tipRight);
 
 
 
@@ -124,7 +126,7 @@ xScaleRight = d3.scaleLinear()
 yScale = d3.scaleBand()
   .domain(populationData.map(function(d) { return d.group; }))
   .rangeRound([h,0])
-  .padding(0.1);
+  .padding(0.1)
 
 
 // SET UP AXES
@@ -160,6 +162,7 @@ svg.append('g')
   .attr('transform', translation(pointA, 0))
   .call(yAxisLeft)
   .selectAll('text')
+   .attr("id", "yAxis")
   .style('text-anchor', 'middle');
 
 svg.append('g')
@@ -302,7 +305,7 @@ var maxValue = Math.max(
     .attr('height', yScale.bandwidth());
 
     rightProvince
-    .text(provinceTwo + ", total population: " + provinceDataTwo.population.total)
+    .text(provinceTwo + ", total population: " + format(provinceDataTwo.population.total))
 
 
 }

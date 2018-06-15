@@ -26,7 +26,7 @@ body{
 	position: relative; 
 	float:left;
 	width: 600px;
-	height:650px;
+	height:670px;
 	margin-left: 5%;
 	margin-right: auto;
 	margin-top: 10%;
@@ -163,12 +163,12 @@ path:hover {
 
 #leftProvince{
 	float:left;
-	margin-left:10px;
+	margin-left:40px;
 }
 
 #rightProvince{
 	float:right;
-	margin-right:10px;
+	margin-right:40px;
 
 }
 
@@ -227,3 +227,26 @@ path:hover {
       top: 100%;
       left: 0;
     }
+
+
+    /* map legend*/
+.legend {
+	position:absolute;
+	left:5px;
+	top:30px;
+}
+
+/* legend colours*/
+.stop-top {
+	stop-color: #008545
+}
+
+/* normal colour range*/
+.stop-bottom {
+	stop-color: #b5f2d2 
+}
+
+.filled {
+	fill: url(#mainGradient);
+}
+

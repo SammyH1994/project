@@ -10,7 +10,10 @@
 function createMap(nld, data, year){
 
 	var width = 600,
-         height = 600;
+        height = 600;
+
+
+    var format = d3.format(".3s")
 
 // create title for map
     var title = d3.select("#container")        
@@ -29,12 +32,11 @@ function createMap(nld, data, year){
     var subtitle = d3.select("#container")
         .append("text")
         .attr("id", "subtitle")
-        .text("Total population: " + data["0"].population.total)
-
+        .text("Total population: " + format(data["0"].population.total))
 
     var color = d3.scaleLinear()
         .range(["#b5f2d2", "#008545"])
-        .domain([100000, 4000000])
+        .domain([300000, 3650000])
 
 
     var projection = d3.geoMercator()
@@ -57,7 +59,7 @@ function createMap(nld, data, year){
         .map( function(d) { return parseInt(d); } );
          toolTip.classed("hidden", false)
         .attr("style", "left:"+(hoverInfo[0]+10)+"px;top:"+(hoverInfo[1]+10)+"px")
-        .html("Province: "+ d.properties.name + "</br> Population: " + population)
+        .html("Province: "+ d.properties.name + "</br> Population: " + format(population))
     }
 
 
@@ -82,6 +84,7 @@ function createMap(nld, data, year){
     .append("path")
     .attr("d", path)
     .attr("stroke", "grey")
+    .attr("id", "map")
     .attr("fill", function(d) {
         population = getPopulation(d.properties.name)
         return color(population)
@@ -91,6 +94,8 @@ function createMap(nld, data, year){
         toolTip.classed("hidden", true);
         })
         .on("click", function(d){
+            currentProvince = d.properties.name
+
             var province = d.properties.name
             if (province === "Limburg"){
                 province = "Nederland"
@@ -100,10 +105,64 @@ function createMap(nld, data, year){
             updatePyramid(provinceDataOne, provinceDataTwo, province)
         })
 
-}
 
 
-function updateMap()
-{
+        // create legend
+
+        var wLegend = 80, hLegend = w / 2;
+        var margin = { top: 20, left: 20, bottom: 30, right: 20};
+
+    // create svg
+    var key = d3.select("#container")
+        .append("svg")
+        .attr("width", wLegend)
+        .attr("height", hLegend)
+        .attr("id", "legend")
+        .attr("class", "legend");
+
+    // Create the svg:defs element and the main gradient definition.
+    var svgDefs = key.append("defs");
+
+    var mainGradient = svgDefs.append("linearGradient")
+        .attr("id", "mainGradient")
+        .attr("x1", "100%")
+        .attr("y1", "0%")
+        .attr("x2", "100%")
+        .attr("y2", "100%")
+        .attr("spreadMethod", "pad");
+
+    // Create the stops of the main gradient. Each stop will be assigned
+    // a class to style the stop using CSS.
+    mainGradient.append("stop")
+        .attr("class", "stop-top")
+        .attr("offset", "0%");
+
+    mainGradient.append("stop")
+        .attr("class", "stop-bottom")
+        .attr("offset", "100%");
+
+    // Use the gradient to set the shape fill, via CSS.
+    key.append("rect")
+        .classed("filled", true)
+        .attr("width", (wLegend / 2))
+        .attr("height", hLegend);
+
+        console.log(h)
+    // create y scale
+    var y = d3.scaleLinear()
+        .range([height, 0])
+        .domain([300000, 3600000]);
+
+    var yAxis = d3.axisRight()
+        .ticks(5)
+        .tickFormat(d3.format(".3s"))
+        .scale(y);
+
+    // create y axis
+    key.append("g")
+        .attr("class", "y axis")
+        .attr("transform", "translate(41,10)")
+        .style("font", "10px sans-serif")
+        .call(yAxis);
 
 }

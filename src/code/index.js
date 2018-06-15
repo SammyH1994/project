@@ -1,3 +1,5 @@
+var currentProvince = "Nederland"
+
 window.onload = function() {
 	
 	var data2006 = "src/data/data_2006.json";
@@ -37,10 +39,10 @@ window.onload = function() {
 
 	createMap(nld, datatest, "2010");
 	var provinceDataOne = getProvinceData(datatest, "Limburg")
-	var provinceDataTwo = getProvinceData(datatest, "Nederland")
-	createPyramid(provinceDataOne, provinceDataTwo, "Nederland");
+	var provinceDataTwo = getProvinceData(datatest, currentProvince)
+	createPyramid(provinceDataOne, provinceDataTwo, currentProvince);
 
-
+	createBarchart(provinceDataOne, provinceDataTwo, currentProvince, "income")	
 
 var slider = document.getElementById("myRange");
 var output = document.getElementById("year");
@@ -65,16 +67,29 @@ slider.oninput = function() {
 
   	}
 
+
   	data = years[year]
   	document.getElementById("container").innerHTML = "";
   	createMap(nld, data, year)
 
   	provinceDataOne = getProvinceData(data, "Limburg")
-  	provinceDataTwo = getProvinceData(data, "Nederland")
-  	updatePyramid(provinceDataOne, provinceDataTwo, "Nederland")
+  	provinceDataTwo = getProvinceData(data, currentProvince)
+  	updatePyramid(provinceDataOne, provinceDataTwo, currentProvince)
 
 
 }
 
+
+function changeTopic(){
+
+	var topic = this.getAttribute("id");
+	createBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic)
+}
+
+	document.getElementById("birthsanddeaths").onclick=changeTopic;
+	document.getElementById("causesofdeath").onclick=changeTopic;
+	document.getElementById("income").onclick=changeTopic;
+	document.getElementById("socialsecurity").onclick=changeTopic;
+		document.getElementById("education").onclick=changeTopic;
 }
 }
