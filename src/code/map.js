@@ -5,7 +5,6 @@
  *  map.js contains the functions that creates a map with its legend via index.js
 **/
 
-
 // creates a map
 function createMap(nld, data, year){
 
@@ -36,7 +35,7 @@ function createMap(nld, data, year){
 
     var color = d3.scaleLinear()
         .range(["#b5f2d2", "#008545"])
-        .domain([300000, 3650000])
+        .domain([300000, 3500000])
 
 
     var projection = d3.geoMercator()
@@ -65,9 +64,7 @@ function createMap(nld, data, year){
 
     // misschien aanpassen voor andere data soorten!! 
     function getPopulation(province){
-        // console.log(province)
-        // console.log(topic)
-        // console.log(subtopic)
+
         for (var i = 0; i < data.length; i++){
             if (data[i].province == province){
                 return data[i].population.total
@@ -76,7 +73,6 @@ function createMap(nld, data, year){
     }
 
 
-    // console.log(getPopulation("Limburg", "population", "total"))
 
     svg.selectAll("path")
     .data(nld.features)
@@ -100,16 +96,19 @@ function createMap(nld, data, year){
             if (province === "Limburg"){
                 province = "Nederland"
          }
+            currentProvince = province
             provinceDataOne = getProvinceData(data, "Limburg")
             provinceDataTwo = getProvinceData(data, province)
-            updatePyramid(provinceDataOne, provinceDataTwo, province)
+            updatePyramid(provinceDataOne, provinceDataTwo, currentProvince)
+            updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, "yes")
+
         })
 
 
 
         // create legend
 
-        var wLegend = 80, hLegend = w / 2;
+        var wLegend = 80, hLegend = width/ 2;
         var margin = { top: 20, left: 20, bottom: 30, right: 20};
 
     // create svg
@@ -147,7 +146,6 @@ function createMap(nld, data, year){
         .attr("width", (wLegend / 2))
         .attr("height", hLegend);
 
-        console.log(h)
     // create y scale
     var y = d3.scaleLinear()
         .range([height, 0])
