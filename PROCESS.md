@@ -56,5 +56,6 @@ Gender is not that relevant for my story and one pyramid makes it easier to comp
 ### Day 1
 - Worked on updating bar chart, had a lot of issues with changing amount of bars
 - Updating now works, legend works, still issues with tooltip
+- Decided to maybe add a line chart with the prevalence of birth defects per province over 
 
 ## Week 4
