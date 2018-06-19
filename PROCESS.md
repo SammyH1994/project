@@ -46,7 +46,7 @@ Possible other solution: find data per gender. However, this data is per age ins
 - Started on bar chart: working but not interactive yet and no linking.
 
 ### Day 5
-- Presented progress
+- Presented progress  
 Discussed the population pyramid: decided to change data to be per 5 years, but not have 2 bar charts with a division between gender.
 Gender is not that relevant for my story and one pyramid makes it easier to compare between provinces
 - Changed map data, now has water!
