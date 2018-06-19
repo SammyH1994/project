@@ -58,4 +58,14 @@ Gender is not that relevant for my story and one pyramid makes it easier to comp
 - Updating now works, legend works, still issues with tooltip
 - Decided to maybe add a line chart with the prevalence of birth defects per province over the years. Could not find data unfortunately. Decided to e-mail Luc Smits (lead researcher of the study on birth defects in Limburg) to ask for this data.
 
+### Day 2
+- Fixed bar chart tooltip
+- Fixed bar chart transitions --> first time now also transitions into screen
+- Fixed map legend
+- Got correct data for pyramid, adjusted CSV files with this data, adjusted code for pyramid
+- E-mailed Luc Smits to ask for data, he already responded.  
+Unfortunately he will not give me the data. Therefore, there will be no line chart with the birth defects per year.  
+Still have to think if I will add something else, but not sure if there is time to find new data, process this and make another visualization.
+- Figured out how to check for empty data in the bar chart --> now have to create an alert message or something to show when some data is missing. 
+
 ## Week 4
