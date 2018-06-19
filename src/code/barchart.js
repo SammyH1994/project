@@ -1,3 +1,7 @@
+ //https://codepen.io/Rastikko/pen/GqNbqM
+//https://jsfiddle.net/mrl513/arjcq9ka/
+// https://bl.ocks.org/bricedev/0d95074b6d83a77dc3ad
+
   var marginBar = {top: 20, right: 100, bottom: 30, left: 70},
     widthBar = 500 - marginBar.left - marginBar.right,
     heightBar = 300 - marginBar.top - marginBar.bottom;
@@ -29,11 +33,11 @@ title = d3.select("#container3")
     .attr("width", widthBar + marginBar.left + marginBar.right)
     .attr("height", heightBar + marginBar.top + marginBar.bottom)
     .append("g")
-    .attr("transform", "translate(" + marginBar.left + "," + marginBar.top + ")");
+    .attr("transform", translation(marginBar.left, marginBar.top));
 
  svg.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(0," + heightBar + ")");
+      .attr("transform", translation(0, heightBar));
 
   svg.append("g")
       .attr("class", "y axis")
@@ -52,21 +56,44 @@ title = d3.select("#container3")
 }
 
 function updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, updateY){
-
-// create title for map
-title
-        .text(topic);
 // data
 var barData = [provinceDataOne, provinceDataTwo];
 
 
+// Check for empty values
+var keys = Object.keys(barData[0][topic])
+
+var emptyValues = 0
+for (var i = 0; i < barData.length; i++){
+      var dates = barData[i][topic]
+      for (var j = 0; j < Object.keys(barData[0][topic]).length; j++){
+        if (dates[keys[j]] === " "){
+          emptyValues = 1
+        }
+        }
+  }
+
+if (emptyValues === 1){
+  console.log("nein")
+}
+
+else {
+
+  // create title for map
+title
+        .text(topic);
   var categoriesNames = barData.map(function(d) { return d.province; });
     var rateNames = Object.keys(barData[0][topic]);
+
+
+
 barData.forEach(function(d) {
     d.values = rateNames.map(function(name) { return {name: name, value: parseFloat(d[topic][name])}; });
 });
 
-console.log(barData[1])
+
+// console.log(barData)
+// console.log(barData[0].values)
 // update scales
   x0
   .domain(categoriesNames);
@@ -81,7 +108,7 @@ console.log(barData[1])
       svg.select(".x")
       .call(xAxis);
 
-if (updateY == "yes"){
+// if (updateY == "yes"){
 
 
 
@@ -98,15 +125,14 @@ if (updateY == "yes"){
   .call(yAxis);
 
 
-  }
+  // }
 
    var tip = d3.tip()
       .attr("class", "d3-tip")
       .offset([-8, 0])
-      .html(function(d) {         return "<strong>Age Group:</strong> <span style='color:red'>" + d.value + 
-          "</span></br><strong>Percentage:</strong> <span style='color:red'>" + d["Limburg"] + "</span>";});
+      .html(d =>   "<strong>Value:</strong> <span style='color:red'>" + d.value  + "</span>");
 
-    svg.call(tip);
+    
 
   var slice = svg.selectAll(".slice")
     .data(barData);
@@ -115,7 +141,7 @@ if (updateY == "yes"){
     .enter()
     .append("g")
     .attr("class", "slice")
-    .attr("transform", function(d) { return "translate(" + x0(d.province) + ",0)"; });
+    .attr("transform", function(d) { return translation(x0(d.province),0); });
 
 
   var bars = d3.selectAll(".slice").selectAll("rect")
@@ -124,6 +150,12 @@ if (updateY == "yes"){
     bars
     .enter()
     .append("rect")
+    .on("mouseover", tip.show)
+    .on("mouseout", tip.hide)
+    .transition()
+      .delay(function(d, i) {
+        return 30 * i;
+      })    .duration(800)
     .attr("width", x1.bandwidth())
     .attr("x", function(d) { return x1(d.name); })
     .attr("y", function(d) { return y(d.value); })
@@ -133,34 +165,36 @@ if (updateY == "yes"){
 
     bars
     .transition()
-    .duration(500)
+      .delay(function(d, i) {
+        return 30 * i;
+      })
+          .duration(800)
     .attr("x", function(d){return x1(d.name)})
     .attr("width", x1.bandwidth())
     .attr("y", function(d) { return y(d.value); })
            .attr("height", function(d) { return heightBar - y(d.value); })
            .style("fill", function(d,i) { return color(i); });
 
-    bars
-    .on("mouseover", tip.show)
-    .on("mouseout", tip.hide);
+
 
   bars
   .exit()
   .remove();
 
+  svg.call(tip);
+
  svg.selectAll(".legend")
-        .remove();
+      .remove();
 
   var legendHolder = svg.append('g')
   // translate the holder to the right side of the graph
-  .attr('transform', "translate(" + (marginBar.left + widthBar) + ",0)")
-
+  .attr('transform', translation(marginBar.left + widthBar, 0))
 
 var legend = legendHolder.selectAll(".legend")
     .data(rateNames.slice())
     .enter().append("g")
     .attr("class", "legend")
-    .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+    .attr("transform", function(d, i) { return  translation(0, i * 20); });
 
 legend.append("rect")
     .attr("x", 0)
@@ -177,17 +211,6 @@ legend.append("text")
 
 
 
-// legend.append("rect")
-//   .attr("x", 0)
-//   .attr("width", 18)
-//   .attr("height", 18)
-//   .style("fill", color);
 
-// legend.append("text")
-//   .attr("x", 0)
-//   .attr("y", 9)
-//   .attr("dy", ".35em")
-//   .style("text-anchor", "end")
-//   .text(function(d) { return d; });
-
+}
 }

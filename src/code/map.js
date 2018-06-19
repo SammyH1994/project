@@ -21,11 +21,71 @@ function createMap(nld, data, year){
         .style("text-anchor", "middle")
         .text("Population in the Netherlands in the year " + year);
 
+// Create SVG
 
     var svg = d3.select("#container")
         .append("svg")
+        .attr("id", "mapsvg")
         .attr("width", "100%")
         .attr("height", "90%");
+
+
+    // Create legend
+    var w = 100, h = 350;
+
+    var key = svg.append("svg")
+    .attr("id", "legend")
+    .attr("width", w)
+    .attr("height", h);
+
+    var legend = key.append("defs")
+    .append("svg:linearGradient")
+    .attr("id", "gradient")
+    .attr("x1", "100%")
+    .attr("y1", "0%")
+    .attr("x2", "100%")
+    .attr("y2", "100%")
+    .attr("spreadMethod", "pad");
+
+    legend
+    .append("stop")
+    .attr("offset", "0%")
+    .attr("stop-color", "#008545")
+    .attr("stop-opacity", 0.8);
+
+    legend
+    .append("stop")
+    .attr("offset", "100%")
+    .attr("stop-color", "#b5f2d2")
+    .attr("stop-opacity", 0.8);
+
+
+    key
+    .append("rect")
+    .attr("width", 20)
+    .attr("height", 300)
+    .style("fill", "url(#gradient)")
+    .style("stroke", "grey")
+    .attr("transform", translation(0,10));
+
+    var y = d3.scaleLinear()
+    .range([300, 0])
+    .domain([300000, 3600000]);
+
+    var yAxis = d3.axisRight()
+    .scale(y);
+
+     key.append("g")
+     .attr("class", "y axis")
+     .attr("transform", translation(22,10))
+     .call(yAxis)
+     .append("text")
+     .attr("transform", "rotate(-90)")
+     .attr("y", 30)
+     .attr("dy", ".71em")
+     .style("text-anchor", "end")
+     .text("axis title");
+
 
     // create subtitle for map
     var subtitle = d3.select("#container")
@@ -57,7 +117,7 @@ function createMap(nld, data, year){
         var hoverInfo = d3.mouse(svg.node())
         .map( function(d) { return parseInt(d); } );
          toolTip.classed("hidden", false)
-        .attr("style", "left:"+(hoverInfo[0]+10)+"px;top:"+(hoverInfo[1]+10)+"px")
+        .attr("style", "left:"+(hoverInfo[0]+10)+"px;top:"+(hoverInfo[1]+55)+"px")
         .html("Province: "+ d.properties.name + "</br> Population: " + format(population))
     }
 
@@ -105,62 +165,5 @@ function createMap(nld, data, year){
         })
 
 
-
-        // create legend
-
-        var wLegend = 80, hLegend = width/ 2;
-        var margin = { top: 20, left: 20, bottom: 30, right: 20};
-
-    // create svg
-    var key = d3.select("#container")
-        .append("svg")
-        .attr("width", wLegend)
-        .attr("height", hLegend)
-        .attr("id", "legend")
-        .attr("class", "legend");
-
-    // Create the svg:defs element and the main gradient definition.
-    var svgDefs = key.append("defs");
-
-    var mainGradient = svgDefs.append("linearGradient")
-        .attr("id", "mainGradient")
-        .attr("x1", "100%")
-        .attr("y1", "0%")
-        .attr("x2", "100%")
-        .attr("y2", "100%")
-        .attr("spreadMethod", "pad");
-
-    // Create the stops of the main gradient. Each stop will be assigned
-    // a class to style the stop using CSS.
-    mainGradient.append("stop")
-        .attr("class", "stop-top")
-        .attr("offset", "0%");
-
-    mainGradient.append("stop")
-        .attr("class", "stop-bottom")
-        .attr("offset", "100%");
-
-    // Use the gradient to set the shape fill, via CSS.
-    key.append("rect")
-        .classed("filled", true)
-        .attr("width", (wLegend / 2))
-        .attr("height", hLegend);
-
-    // create y scale
-    var y = d3.scaleLinear()
-        .range([height, 0])
-        .domain([300000, 3600000]);
-
-    var yAxis = d3.axisRight()
-        .ticks(5)
-        .tickFormat(d3.format(".3s"))
-        .scale(y);
-
-    // create y axis
-    key.append("g")
-        .attr("class", "y axis")
-        .attr("transform", "translate(41,10)")
-        .style("font", "10px sans-serif")
-        .call(yAxis);
 
 }

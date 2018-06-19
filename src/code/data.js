@@ -28,3 +28,4 @@ function getProvinceData(data, province, topic = "", subtopic = ""){
 		}
 	}
 }
+

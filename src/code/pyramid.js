@@ -1,3 +1,5 @@
+//https://stackoverflow.com/questions/25044997/creating-population-pyramid-with-d3-js
+
 var svg, leftBars, rightBars, yScale, xScale, xScaleLeft, xScaleRight, populationData, rightProvince;
 
 // SET UP DIMENSIONS
@@ -30,20 +32,31 @@ populationData = [
 {group: "11-15", "Limburg": provinceDataOne.population.from11to15, provinceTwo: provinceDataTwo.population.from11to15},
 {group: "16-20", "Limburg": provinceDataOne.population.from16to20, provinceTwo: provinceDataTwo.population.from16to20},
 {group: "21-25", "Limburg": provinceDataOne.population.from21to25, provinceTwo: provinceDataTwo.population.from21to25},
-{group: "26-45", "Limburg": provinceDataOne.population.from26to45, provinceTwo: provinceDataTwo.population.from26to45},
-{group: "46-65", "Limburg": provinceDataOne.population.from46to65, provinceTwo: provinceDataTwo.population.from46to65},
-{group: "66-80", "Limburg": provinceDataOne.population.from66to80, provinceTwo: provinceDataTwo.population.from66to80},
-{group: "81+", "Limburg": provinceDataOne.population.from81, provinceTwo: provinceDataTwo.population.from81}
+{group: "26-30", "Limburg": provinceDataOne.population.from26to30, provinceTwo: provinceDataTwo.population.from26to30},
+{group: "31-35", "Limburg": provinceDataOne.population.from31to35, provinceTwo: provinceDataTwo.population.from31to35},
+{group: "36-40", "Limburg": provinceDataOne.population.from36to40, provinceTwo: provinceDataTwo.population.from36to40},
+{group: "41-45", "Limburg": provinceDataOne.population.from41to45, provinceTwo: provinceDataTwo.population.from41to45},
+{group: "45-50", "Limburg": provinceDataOne.population.from46to50, provinceTwo: provinceDataTwo.population.from46to50},
+{group: "51-55", "Limburg": provinceDataOne.population.from51to55, provinceTwo: provinceDataTwo.population.from51to55},
+{group: "56-60", "Limburg": provinceDataOne.population.from56to60, provinceTwo: provinceDataTwo.population.from56to60},
+{group: "61-65", "Limburg": provinceDataOne.population.from61to65, provinceTwo: provinceDataTwo.population.from61to65},
+{group: "66-70", "Limburg": provinceDataOne.population.from66to70, provinceTwo: provinceDataTwo.population.from66to70},
+{group: "71-75", "Limburg": provinceDataOne.population.from71to75, provinceTwo: provinceDataTwo.population.from71to75},
+{group: "76-80", "Limburg": provinceDataOne.population.from76to80, provinceTwo: provinceDataTwo.population.from76to80},
+{group: "81-85", "Limburg": provinceDataOne.population.from81to85, provinceTwo: provinceDataTwo.population.from81to85},
+{group: "86-90", "Limburg": provinceDataOne.population.from86to90, provinceTwo: provinceDataTwo.population.from86to90},
+{group: "91-94", "Limburg": provinceDataOne.population.from91to94, provinceTwo: provinceDataTwo.population.from91to94},
+{group: "95+", "Limburg": provinceDataOne.population.from95, provinceTwo: provinceDataTwo.population.from95}
 ];
 
 
 // parse Amount so that d3.max works
 	populationData.forEach(function(d) {
-		d["Limburg"] = parseInt(d["Limburg"]),
-		d.provinceTwo = parseInt(d.provinceTwo);
+		d["Limburg"] = parseFloat(d["Limburg"]).toFixed(2),
+		d.provinceTwo = parseFloat(d.provinceTwo).toFixed(2);
 				});
 
-
+console.log(populationData)
 // create title for map
     var title = d3.select("#container2")        
         .append("text")
@@ -229,7 +242,8 @@ rightBars = rightBarGroup.selectAll('.bar.right')
 function updatePyramid(provinceDataOne, provinceDataTwo, provinceTwo){
 
 
-var ageGroups = ["from0to4", "from5to10", "from11to15", "from16to20", "from21to25", "from26to45", "from46to65", "from66to80", "from81"]
+var ageGroups = ["from0to4", "from5to10", "from11to15", "from16to20", "from21to25", "from26to30", "from31to35", "from36to40", "from41to45", "from46to50", "from51to55", "from56to60", "from61to65",
+"from66to70", "from71to75", "from76to80", "from81to85", "from86to90", "from91to94", "from95"]
 
 
 for (var i = 0; i < populationData.length; i ++){
@@ -239,8 +253,8 @@ for (var i = 0; i < populationData.length; i ++){
 
 // parse Amount so that d3.max works
 	populationData.forEach(function(d) {
-		d["Limburg"] = parseInt(d["Limburg"])
-		d.provinceTwo = parseInt(d.provinceTwo);
+		d["Limburg"] = parseFloat(d["Limburg"]).toFixed(2)
+		d.provinceTwo = parseFloat(d.provinceTwo).toFixed(2);
 				});
 
 var maxValue = Math.max(
@@ -268,7 +282,7 @@ var maxValue = Math.max(
 	    	.delay(function(d, i) {
 	    		return 30 * i;
 	      	})
-	      	.duration(800)
+	      	.duration(500)
     .attr('class', 'bar left')
     .attr('x', 0)
     .attr('y', function(d) { return yScale(d.group); })

@@ -25,7 +25,7 @@ body{
 #container { 
 	position: relative; 
 	float:left;
-	width: 600px;
+	width: 650px;
 	height:670px;
 	margin-left: 5%;
 	margin-right: auto;
@@ -173,7 +173,9 @@ path:hover {
 }
 
 
-
+#mapsvg{
+	margin-left: 20px;
+}
 .bar {
   fill-opacity: 0.5;
 }
@@ -229,24 +231,4 @@ path:hover {
     }
 
 
-    /* map legend*/
-.legend {
-	position:absolute;
-	left:5px;
-	top:30px;
-}
-
-/* legend colours*/
-.stop-top {
-	stop-color: #008545
-}
-
-/* normal colour range*/
-.stop-bottom {
-	stop-color: #b5f2d2 
-}
-
-.filled {
-	fill: url(#mainGradient);
-}
 

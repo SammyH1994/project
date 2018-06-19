@@ -34,7 +34,15 @@ window.onload = function() {
 	function callback(error, data2006, data2007, data2008, data2009, data2010, data2011, data2012, data2013, data2014, data2015, nld) {
 	if (error) throw error;
 
+	// var  years = [data2006, data2006, data2007, data2008, data2009, data2010, data2011, data2012, data2013, data2014, data2015];
 
+	// console.log(years)
+	//   	for (var i = 0; i < years.length; i++){
+	  		
+	//   		data2006.data_2006[0].education.total = data2006.data_2006[0].education.total/data2006.data_2006[0].population.total*100
+	//   	}
+
+	// console.log(data2006)
 	datatest = data2010.data_2010
 
 
@@ -66,7 +74,6 @@ slider.oninput = function() {
   		"2014": data2014.data_2014,
   		"2015": data2015.data_2015,
   	}
-
 
   	data = years[year]
   	document.getElementById("container").innerHTML = "";
