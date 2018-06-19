@@ -56,6 +56,6 @@ Gender is not that relevant for my story and one pyramid makes it easier to comp
 ### Day 1
 - Worked on updating bar chart, had a lot of issues with changing amount of bars
 - Updating now works, legend works, still issues with tooltip
-- Decided to maybe add a line chart with the prevalence of birth defects per province over 
+- Decided to maybe add a line chart with the prevalence of birth defects per province over the years. Could not find data unfortunately. Decided to e-mail Luc Smits (lead researcher of the study on birth defects in Limburg) to ask for this data.
 
 ## Week 4
