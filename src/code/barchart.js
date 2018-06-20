@@ -2,8 +2,8 @@
 //https://jsfiddle.net/mrl513/arjcq9ka/
 // https://bl.ocks.org/bricedev/0d95074b6d83a77dc3ad
 
-  var marginBar = {top: 20, right: 100, bottom: 30, left: 70},
-    widthBar = 500 - marginBar.left - marginBar.right,
+  var marginBar = {top: 20, right: 100, bottom: 30, left: 30},
+    widthBar = 420 - marginBar.left - marginBar.right,
     heightBar = 300 - marginBar.top - marginBar.bottom;
 
 var svg, x0, x1, y, color, title;

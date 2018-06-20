@@ -34,7 +34,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 			 integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
 			 crossorigin="anonymous">
-		<link rel = "stylesheet" href="https://bootswatch.com/4/simplex/bootstrap.min.css">
+		<link rel = "stylesheet" href="https://bootswatch.com/4/minty/bootstrap.min.css">
 	    <link href="src/code/index.css" rel="stylesheet"/>
 
 	     <!--scripts-->
@@ -64,29 +64,33 @@
 
 	    <!-- hero unit with title of page and subtext -->
 		<div class="jumbotron">
-			<h1> How is Limburg different?</h1>
+			<h2> How is Limburg different?</h2>
  			<hr class="my-4"> 
 			<h4>This page visualizes the differences between Limburg and other provinces of the Netherlands.</h4>
 		</div>
 
 
 		<!-- containers for graphs -->
-		<div class="slidecontainer">
+
+
+
+		<div class="container">
+			<div class="row">
+
+				<div class="col align-self-center">
+				<div class="slidecontainer">
 			<p>Drag the slider to choose a year:</p>
-  <input type="range" min="2006" max="2015" value="2010" class="slider" id="myRange">
-  <p><br>Current year: <span id="year"></span></p>
-</div>
-
-			<div id="container">
+  			<input type="range" min="2006" max="2015" value="2010" class="slider" id="myRange">
+ 			 <p><br>Current year: <span id="year"></span></p>
 			</div>
-			<div id="container2">
-			</div>
+					<div id="container1"></div>
+				</div>
+				<div class="col">
+					<div id="container2"></div>
 
-			<div id="container3">
-			
-				<!-- drop down button to switch topic in bar chart-->
-		<div class="dropdown">
- 			 <button class="btn btn-primary dropdown-toggle" type="button" 
+					<div id="container3">
+					<div class="dropdown">
+ 			 		<button class="btn btn-primary dropdown-toggle" type="button" 
  			 id="dropdownButton" data-toggle="dropdown" aria-haspopup="true" 
  			 	aria-expanded="false">
     		Topic</button>
@@ -100,6 +104,14 @@
   			</div>
 		</div>
 			</div>
+					</div>
+
+
+				</div>
+			</div
+		</div>
+				<!-- drop down button to switch topic in bar chart-->
+		
 
 <div class="clear"></div>
 		<div class="footer">

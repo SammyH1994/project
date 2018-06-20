@@ -62,6 +62,8 @@ slider.oninput = function() {
 	year = this.value
   	output.innerHTML = year
 
+  	console.log("hoi")
+
   	var years = {
   		"2006": data2006.data_2006,
   		"2007": data2007.data_2007,
@@ -76,7 +78,7 @@ slider.oninput = function() {
   	}
 
   	data = years[year]
-  	document.getElementById("container").innerHTML = "";
+  	document.getElementById("container1").innerHTML = "";
   	createMap(nld, data, year)
 
   	provinceDataOne = getProvinceData(data, "Limburg")

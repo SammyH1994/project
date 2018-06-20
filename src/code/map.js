@@ -8,14 +8,14 @@
 // creates a map
 function createMap(nld, data, year){
 
-	var width = 600,
+	var width = 480,
         height = 600;
 
 
     var format = d3.format(".3s")
 
 // create title for map
-    var title = d3.select("#container")        
+    var title = d3.select("#container1")        
         .append("text")
         .attr("id", "title")
         .style("text-anchor", "middle")
@@ -23,7 +23,7 @@ function createMap(nld, data, year){
 
 // Create SVG
 
-    var svg = d3.select("#container")
+    var svg = d3.select("#container1")
         .append("svg")
         .attr("id", "mapsvg")
         .attr("width", "100%")
@@ -88,7 +88,7 @@ function createMap(nld, data, year){
 
 
     // create subtitle for map
-    var subtitle = d3.select("#container")
+    var subtitle = d3.select("#container1")
         .append("text")
         .attr("id", "subtitle")
         .text("Total population: " + format(data["0"].population.total))
@@ -106,7 +106,7 @@ function createMap(nld, data, year){
     projection.fitSize([width, height], nld);
 
     // create tip
-    var toolTip = d3.select("#container")
+    var toolTip = d3.select("#container1")
         .append("div")
         .attr("class", "tooltip hidden")
 

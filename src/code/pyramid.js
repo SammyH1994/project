@@ -3,7 +3,7 @@
 var svg, leftBars, rightBars, yScale, xScale, xScaleLeft, xScaleRight, populationData, rightProvince;
 
 // SET UP DIMENSIONS
-var w = 500,
+var w = 450,
     h = 300;
     
 // margin.middle is distance from center line to each y-axis
