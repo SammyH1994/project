@@ -83,5 +83,7 @@ To do:
 - Check interactions between slider/topic/clicking on map: have a feeling this sometimes does not work correctly
 - Styling of site
 - Improve code
+- Add a home page with a small explanation of the website
+- Add text in the "About" section
 
 ## Week 4
