@@ -24,10 +24,53 @@ color = d3.scaleOrdinal()
 .range(colorScheme);
     // .range(["#fbb4ae", "#b3cde3", "#ccebc5", "#decbe4", " #fed9a6"]);
 
-title = d3.select("#container3")        
-        .append("text")
-        .attr("id", "title")
-        .style("text-anchor", "middle")
+
+
+    var titleSvg = d3.select("#container3")
+    .append('svg')
+    .attr("width", widthBar)
+    .attr("height", 50)
+    .append('g')
+    // .attr('transform','translate(10,10)');
+
+title = titleSvg
+.append('g')
+.attr('id', 'title');
+
+
+  // topic titles
+title
+.append('text')
+.attr("id", "bartitel")
+.style("font-size", "15px")
+.style("text-anchor", "middle")
+.attr("x", widthBar/2)
+.attr("y", 30);
+
+title
+.append('text')
+.attr("id", "barsubtitel")
+  .style("text-anchor", "middle")
+        .style("font-size", "10px")
+.attr('y', 50)
+.attr("x", widthBar/2);
+
+
+// title = d3.select("#container3").append("svg")
+//   .attr("width", widthBar + marginBar.left + marginBar.right)
+//   .attr("height", 50)
+//   .append("g")    
+//         .append("text")
+//         .attr("id", "title")
+//         .attr("dy", ".0em")
+//         .style("text-anchor", "middle")      
+
+// subtitle = d3.select("#container3")
+// .append("g")
+//             .append("tspan")
+//         .attr("id", "subtitlebar")
+//         .attr("dy", ".8em")
+
 
     svg = d3.select("#container3").append("svg")
     .attr("width", widthBar + marginBar.left + marginBar.right)
@@ -43,19 +86,23 @@ title = d3.select("#container3")
       .attr("class", "y axis")
       .style('opacity','0');
 
-        svg.append("text")
+      svg.append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .style('font-weight','bold')
+      .style("font-size", "10px")
       .text("Value");
+
+
+
+
 
 
 
 }
 
-function updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, updateY){
+function updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, bartitel, barsubtitel, updateY){
 // data
 var barData = [provinceDataOne, provinceDataTwo];
 
@@ -67,23 +114,26 @@ var emptyValues = 0
 for (var i = 0; i < barData.length; i++){
       var dates = barData[i][topic]
       for (var j = 0; j < Object.keys(barData[0][topic]).length; j++){
-        if (dates[keys[j]] === " "){
+        if (dates[keys[j]] === "0.00"){
           emptyValues = 1
         }
         }
   }
 
 if (emptyValues === 1){
-  console.log("nein")
+  document.getElementById("nodata").style.display =  "block";
 }
 
 else {
+  title.selectAll("#bartitel")
+  .text(bartitel);
 
-  // create title for map
-title
-        .text(topic);
+  title.selectAll("#barsubtitel")
+  .text(barsubtitel);
+
   var categoriesNames = barData.map(function(d) { return d.province; });
     var rateNames = Object.keys(barData[0][topic]);
+
 
 
 
@@ -92,8 +142,6 @@ barData.forEach(function(d) {
 });
 
 
-// console.log(barData)
-// console.log(barData[0].values)
 // update scales
   x0
   .domain(categoriesNames);
@@ -118,7 +166,7 @@ barData.forEach(function(d) {
   var yAxis = d3.axisLeft()
     .scale(y);
 
-      svg.select('.y')
+  svg.select('.y')
   .transition()
   .duration(500)
   .style('opacity','1')

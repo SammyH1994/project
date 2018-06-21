@@ -1,7 +1,10 @@
 var currentProvince = "Nederland"
 var topic = "income"
+var titel = "Yearly income"
+var subtitel = "x 1000 euro"
 
 window.onload = function() {
+
 	
 	var data2006 = "src/data/data_2006.json";
 	var data2007 = "src/data/data_2007.json";
@@ -34,35 +37,6 @@ window.onload = function() {
 	function callback(error, data2006, data2007, data2008, data2009, data2010, data2011, data2012, data2013, data2014, data2015, nld) {
 	if (error) throw error;
 
-	// var  years = [data2006, data2006, data2007, data2008, data2009, data2010, data2011, data2012, data2013, data2014, data2015];
-
-	// console.log(years)
-	//   	for (var i = 0; i < years.length; i++){
-	  		
-	//   		data2006.data_2006[0].education.total = data2006.data_2006[0].education.total/data2006.data_2006[0].population.total*100
-	//   	}
-
-	// console.log(data2006)
-	datatest = data2010.data_2010
-
-
-	createMap(nld, datatest, "2010");
-	var provinceDataOne = getProvinceData(datatest, "Limburg")
-	var provinceDataTwo = getProvinceData(datatest, currentProvince)
-	createPyramid(provinceDataOne, provinceDataTwo, currentProvince);
-
-	createBarchart()
-	updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, "yes")	
-
-var slider = document.getElementById("myRange");
-var output = document.getElementById("year");
-output.innerHTML = slider.value;
-
-slider.oninput = function() {
-	year = this.value
-  	output.innerHTML = year
-
-  	console.log("hoi")
 
   	var years = {
   		"2006": data2006.data_2006,
@@ -77,15 +51,40 @@ slider.oninput = function() {
   		"2015": data2015.data_2015,
   	}
 
+  	for (var key in years){
+  		changeDataValues(years[key])
+  	}
+
+	// console.log(data2006)
+	datatest = data2010.data_2010
+
+	createMap(nld, datatest, "2010");
+	updateMap(nld, datatest, "2010")
+	var provinceDataOne = getProvinceData(datatest, "Limburg")
+	var provinceDataTwo = getProvinceData(datatest, currentProvince)
+	createPyramid(provinceDataOne, provinceDataTwo, currentProvince);
+
+	createBarchart()
+	updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, titel, subtitel, "yes")	
+
+var slider = document.getElementById("myRange");
+var output = document.getElementById("year");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+	year = this.value
+  	output.innerHTML = year
+
+ 
   	data = years[year]
-  	document.getElementById("container1").innerHTML = "";
-  	createMap(nld, data, year)
+  	// document.getElementById("mapsvg").selectAll("path").remove();
+  	updateMap(nld, data, year)
+
 
   	provinceDataOne = getProvinceData(data, "Limburg")
   	provinceDataTwo = getProvinceData(data, currentProvince)
   	updatePyramid(provinceDataOne, provinceDataTwo, currentProvince)
-
-  	updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, "no")
+  	updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, titel, subtitel, "no")
 
 
 }
@@ -94,8 +93,35 @@ slider.oninput = function() {
 function changeTopic(){
 
 	topic = this.getAttribute("id");
+
+	// titles
+	if (topic === "income"){
+		titel = "Yearly income"
+		subtitel = "x 1000 euro"
+	}
+	else if (topic === "birthsanddeaths"){
+		titel = "Amount of births and deaths"
+		subtitel = "Per 1000 people"
+	}
+	else if (topic === "causesofdeath"){
+		titel = "Causes of Death"
+		subtitel = "Per 1000 people"
+	}
+	else if (topic === "migration"){
+		titel = "Migration"
+		subtitel = "Percentages"
+	}
+	else if (topic === "socialsecurity"){
+		titel = "Social Security"
+		subtitel = "Per 1000 people"
+	}
+	else if (topic === "education")
+	{
+		titel = "Highest level of Education"
+		subtitel =  "Per 1000 people"
+	}
 	var provinceDataTwo = getProvinceData(datatest, currentProvince)
-	updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, "yes")	
+	updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, titel, subtitel, "yes")	
 }
 
 	document.getElementById("birthsanddeaths").onclick=changeTopic;

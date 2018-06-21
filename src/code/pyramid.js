@@ -56,7 +56,6 @@ populationData = [
 		d.provinceTwo = parseFloat(d.provinceTwo).toFixed(2);
 				});
 
-console.log(populationData)
 // create title for map
     var title = d3.select("#container2")        
         .append("text")

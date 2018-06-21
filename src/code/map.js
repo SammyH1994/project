@@ -5,35 +5,93 @@
  *  map.js contains the functions that creates a map with its legend via index.js
 **/
 
+var mapSvg, path, map, mapsubtitle, projection;
+
 // creates a map
 function createMap(nld, data, year){
 
 	var width = 480,
-        height = 600;
+        height = 480;
 
 
     var format = d3.format(".3s")
 
 // create title for map
-    var title = d3.select("#container1")        
+    maptitle = d3.select("#container1")        
         .append("text")
-        .attr("id", "title")
-        .style("text-anchor", "middle")
-        .text("Population in the Netherlands in the year " + year);
+        .attr("id", "titel")
+        .style("text-anchor", "middle");
 
 // Create SVG
-
-    var svg = d3.select("#container1")
+    mapSvg = d3.select("#container1")
         .append("svg")
         .attr("id", "mapsvg")
         .attr("width", "100%")
         .attr("height", "90%");
 
+    // create subtitle for map
+    mapsubtitle = d3.select("#container1")
+        .append("text")
+        .attr("id", "subtitle");
 
-    // Create legend
+
+    projection = d3.geoMercator()
+
+    path = d3.geoPath()
+        .projection(projection);
+
+    projection.fitSize([width, height], nld);
+
+            // create tip
+    var toolTip = d3.select("#container1")
+        .append("div")
+        .attr("class", "tooltip hidden")
+
+        // create tooltip
+    function createTooltip(d) {
+        var population = getPopulation(d.properties.name, data)
+
+        var hoverInfo = d3.mouse(mapSvg.node())
+        .map( function(d) { return parseInt(d); } );
+         toolTip.classed("hidden", false)
+        .attr("style", "left:"+(hoverInfo[0]+10)+"px;top:"+(hoverInfo[1]+55)+"px")
+        .html("Province: "+ d.properties.name + "</br> Population: " + format(population))
+    }
+
+    // mapSvg.selectAll("path").remove();
+
+    mapSvg.selectAll("path")
+    .data(nld.features)
+    .enter()
+    .append("path")
+    .attr("d", path)
+    .attr("stroke", "grey")
+    .attr("id", function(d) {return d.properties.name})
+
+        .on("mousemove", createTooltip)
+        .on("mouseout",  function(d,i) {
+        toolTip.classed("hidden", true);
+        })
+        .on("click", function(d){
+            currentProvince = d.properties.name
+
+            var province = d.properties.name
+            if (province === "Limburg"){
+                province = "Nederland"
+         }
+            currentProvince = province
+            provinceDataOne = getProvinceData(data, "Limburg")
+            provinceDataTwo = getProvinceData(data, province)
+            updatePyramid(provinceDataOne, provinceDataTwo, currentProvince)
+            updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, "yes")
+
+        })
+
+
+ // Create legend
     var w = 100, h = 350;
 
-    var key = svg.append("svg")
+    var key = mapSvg.append("g")
     .attr("id", "legend")
     .attr("width", w)
     .attr("height", h);
@@ -58,7 +116,6 @@ function createMap(nld, data, year){
     .attr("offset", "100%")
     .attr("stop-color", "#b5f2d2")
     .attr("stop-opacity", 0.8);
-
 
     key
     .append("rect")
@@ -87,43 +144,31 @@ function createMap(nld, data, year){
      .text("axis title");
 
 
-    // create subtitle for map
-    var subtitle = d3.select("#container1")
-        .append("text")
-        .attr("id", "subtitle")
-        .text("Total population: " + format(data["0"].population.total))
+}
 
-    var color = d3.scaleLinear()
+function updateMap(nld, data, year){
+
+    maptitle
+    .text("Population in the Netherlands in the year " + year);
+
+    mapsubtitle
+        .text("Total population: " + format(data["0"].population.total));
+
+                var color = d3.scaleLinear()
         .range(["#b5f2d2", "#008545"])
         .domain([300000, 3500000])
 
-
-    var projection = d3.geoMercator()
-
-    var path = d3.geoPath()
-        .projection(projection);
-
-    projection.fitSize([width, height], nld);
-
-    // create tip
-    var toolTip = d3.select("#container1")
-        .append("div")
-        .attr("class", "tooltip hidden")
-
-    // create tooltip
-    function createTooltip(d) {
-        var population = getPopulation(d.properties.name)
-
-        var hoverInfo = d3.mouse(svg.node())
-        .map( function(d) { return parseInt(d); } );
-         toolTip.classed("hidden", false)
-        .attr("style", "left:"+(hoverInfo[0]+10)+"px;top:"+(hoverInfo[1]+55)+"px")
-        .html("Province: "+ d.properties.name + "</br> Population: " + format(population))
-    }
+mapSvg.selectAll("path")
+    .data(nld.features)
+    .attr("fill", function(d) {
+        population = getPopulation(d.properties.name,data)
+        return color(population)
+    });
+}
 
 
     // misschien aanpassen voor andere data soorten!! 
-    function getPopulation(province){
+    function getPopulation(province, data){
 
         for (var i = 0; i < data.length; i++){
             if (data[i].province == province){
@@ -132,38 +177,3 @@ function createMap(nld, data, year){
                     }
     }
 
-
-
-    svg.selectAll("path")
-    .data(nld.features)
-    .enter()
-    .append("path")
-    .attr("d", path)
-    .attr("stroke", "grey")
-    .attr("id", "map")
-    .attr("fill", function(d) {
-        population = getPopulation(d.properties.name)
-        return color(population)
-    })
-        .on("mousemove", createTooltip)
-        .on("mouseout",  function(d,i) {
-        toolTip.classed("hidden", true);
-        })
-        .on("click", function(d){
-            currentProvince = d.properties.name
-
-            var province = d.properties.name
-            if (province === "Limburg"){
-                province = "Nederland"
-         }
-            currentProvince = province
-            provinceDataOne = getProvinceData(data, "Limburg")
-            provinceDataTwo = getProvinceData(data, province)
-            updatePyramid(provinceDataOne, provinceDataTwo, currentProvince)
-            updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, "yes")
-
-        })
-
-
-
-}

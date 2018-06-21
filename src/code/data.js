@@ -29,3 +29,19 @@ function getProvinceData(data, province, topic = "", subtopic = ""){
 	}
 }
 
+// Change values for causes of death, education and social security to be per 1000 people for better comparison
+function changeDataValues(data){
+	var topics = ["causesofdeath", "education", "socialsecurity"]
+
+for (var i = 0; i < data.length; i++){
+	population = data[i].population.total
+	for (var j = 0; j < topics.length; j++){
+		var subtopics = data[i][topics[j]]
+		for (var key in subtopics){
+			subtopics[key] = parseFloat(subtopics[key]/population*1000).toFixed(2);
+		}
+	}
+
+
+}
+}
