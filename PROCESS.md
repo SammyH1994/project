@@ -68,4 +68,20 @@ Unfortunately he will not give me the data. Therefore, there will be no line cha
 Still have to think if I will add something else, but not sure if there is time to find new data, process this and make another visualization.
 - Figured out how to check for empty data in the bar chart --> now have to create an alert message or something to show when some data is missing. 
 
+### Day 3
+- Worked on implementing bootstrap grid --> still doubting lay out of the three graphs and slider
+- Changed bar char data to be better for comparison (per 1000 people for causes of death, education and social security instead of absolute numbers)
+
+### Day 4
+- Worked on updating map instead of drawing new map
+- Had an issue where Groningen (the first province in the json file) would not be drawn in the path
+- Worked on changing the titles/subtitles for the bar chart: had issues with placing two texts below each other.
+- Worked on adding an alert if there is missing data in the bar chart --> only works the first time, need to check this
+
+To do: 
+- Add check missing data for other charts
+- Check interactions between slider/topic/clicking on map: have a feeling this sometimes does not work correctly
+- Styling of site
+- Improve code
+
 ## Week 4
