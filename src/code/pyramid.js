@@ -91,15 +91,15 @@ var svg = d3.select('#container2').append('svg')
     var tipLeft = d3.tip()
       .attr("class", "d3-tip")
       .offset([-8, 0])
-      .html(function(d) {					return "<strong>Age Group:</strong> <span style='color:red'>" + d.group + 
-					"</span></br><strong>Percentage:</strong> <span style='color:red'>" + d["Limburg"] + "</span>";});
+      .html(function(d) {					return "<strong>Age Group:</strong> <span style='color:#b5f2d2'>" + d.group + 
+					"</span></br><strong>Percentage:</strong> <span style='color:#b5f2d2'>" + d["Limburg"] + "</span>";});
 
 
    var tipRight = d3.tip()
       .attr("class", "d3-tip")
       .offset([-8, 0])
-      .html(function(d) {					return "<strong>Age Group:</strong> <span style='color:red'>" + d.group + 
-					"</span></br><strong>Percentage:</strong> <span style='color:red'>" + d.provinceTwo + "</span>";})
+      .html(function(d) {					return "<strong>Age Group:</strong> <span style='color:#b5f2d2'>" + d.group + 
+					"</span></br><strong>Percentage:</strong> <span style='color:#b5f2d2'>" + d.provinceTwo + "</span>";})
 
 
     var tipSvg = d3.select("body")

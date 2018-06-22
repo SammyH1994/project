@@ -178,7 +178,7 @@ barData.forEach(function(d) {
    var tip = d3.tip()
       .attr("class", "d3-tip")
       .offset([-8, 0])
-      .html(d =>   "<strong>Value:</strong> <span style='color:red'>" + d.value  + "</span>");
+      .html(d =>   "<strong>Value:</strong> <span style='color:#b5f2d2'>" + d.value  + "</span>");
 
     
 
