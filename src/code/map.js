@@ -5,7 +5,7 @@
  *  map.js contains the functions that creates a map with its legend via index.js
 **/
 
-var mapSvg, path, map, mapsubtitle, projection;
+var mapSvg, path, map, mapsubtitle, projection,format;
 
 // creates a map
 function createMap(nld, data, year){
@@ -130,7 +130,9 @@ function createMap(nld, data, year){
     .domain([300000, 3600000]);
 
     var yAxis = d3.axisRight()
-    .scale(y);
+    .scale(y)
+         .ticks(10)
+    .tickFormat(d3.format(".3s"));
 
      key.append("g")
      .attr("class", "y axis")
