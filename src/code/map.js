@@ -127,7 +127,8 @@ function createMap(nld, data, year){
 
     var y = d3.scaleLinear()
     .range([300, 0])
-    .domain([300000, 3600000]);
+    .domain([300000, 3600000])
+    .nice();
 
     var yAxis = d3.axisRight()
     .scale(y)
