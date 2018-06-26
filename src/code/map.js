@@ -10,8 +10,8 @@ var mapSvg, path, map, mapsubtitle, projection,format;
 // creates a map
 function createMap(nld, data, year){
 
-	var width = 480,
-        height = 480;
+	var width = 420,
+        height = 420;
 
 
     var format = d3.format(".3s")
@@ -33,7 +33,10 @@ function createMap(nld, data, year){
     mapsubtitle = d3.select("#container1")
         .append("text")
         .attr("id", "subtitle");
-
+        
+        var color = d3.scaleLinear()
+        .range(["#b5f2d2", "#008545"])
+        .domain([300000, 3500000])
 
     projection = d3.geoMercator()
 
@@ -58,7 +61,20 @@ function createMap(nld, data, year){
         .html("Province: "+ d.properties.name + "</br> Population: " + format(population))
     }
 
-    // mapSvg.selectAll("path").remove();
+var defs = mapSvg.append('svg:defs');
+
+defs.append("svg:pattern")
+    .attr("id", "stripes")
+    .attr("width", 10)
+    .attr("height", 10)
+    .attr("patternUnits", "userSpaceOnUse")
+    .append("svg:image")
+    .attr("xlink:href", "data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPSd3aGl0ZScvPgogIDxwYXRoIGQ9J00tMSwxIGwyLC0yCiAgICAgICAgICAgTTAsMTAgbDEwLC0xMAogICAgICAgICAgIE05LDExIGwyLC0yJyBzdHJva2U9J2JsYWNrJyBzdHJva2Utd2lkdGg9JzEnLz4KPC9zdmc+Cg==")
+    .attr("width", 10)
+    .attr("height", 10)
+    .attr("x", 0)
+    .attr("y", 0);
+
 
     mapSvg.selectAll("path")
     .data(nld.features)
@@ -66,6 +82,7 @@ function createMap(nld, data, year){
     .append("path")
     .attr("d", path)
     .attr("stroke", "grey")
+    .attr("stroke-width", "1px")
     .attr("id", function(d) {return d.properties.name})
 
         .on("mousemove", createTooltip)
@@ -73,7 +90,13 @@ function createMap(nld, data, year){
         toolTip.classed("hidden", true);
         })
         .on("click", function(d){
+            mapSvg.select("#"+currentProvince).style("fill", function(d) {
+        population = getPopulation(d.properties.name,data)
+        return color(population)
+        });
             currentProvince = d.properties.name
+
+            mapSvg.select("#"+currentProvince).style("fill", "url(#stripes)");
 
             var province = d.properties.name
             if (province === "Limburg"){
@@ -83,13 +106,13 @@ function createMap(nld, data, year){
             provinceDataOne = getProvinceData(data, "Limburg")
             provinceDataTwo = getProvinceData(data, province)
             updatePyramid(provinceDataOne, provinceDataTwo, currentProvince)
-            updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, "yes")
+            updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, titel, subtitel, "yes")
 
         })
 
 
  // Create legend
-    var w = 100, h = 350;
+    var w = 100, h = 250;
 
     var key = mapSvg.append("g")
     .attr("id", "legend")
@@ -120,13 +143,13 @@ function createMap(nld, data, year){
     key
     .append("rect")
     .attr("width", 20)
-    .attr("height", 300)
+    .attr("height", h)
     .style("fill", "url(#gradient)")
     .style("stroke", "grey")
     .attr("transform", translation(0,10));
 
     var y = d3.scaleLinear()
-    .range([300, 0])
+    .range([250, 0])
     .domain([300000, 3600000])
     .nice();
 

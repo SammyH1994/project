@@ -67,6 +67,23 @@ window.onload = function() {
 	createBarchart()
 	updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, titel, subtitel, "yes")	
 
+	$("#scrollUp").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#container1").offset().top
+    }, 1000);
+});
+
+		$("#scrollDown").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#container1").offset().top
+    }, 1000);
+});
+
+		$("path").click(function() {
+    $('html, body').animate({
+        scrollTop: $(".slidecontainer").offset().top
+    }, 1000);
+});
 var slider = document.getElementById("myRange");
 var output = document.getElementById("year");
 output.innerHTML = slider.value;

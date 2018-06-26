@@ -4,7 +4,7 @@ var svg, leftBars, rightBars, yScale, xScale, xScaleLeft, xScaleRight, populatio
 
 // SET UP DIMENSIONS
 var w = 450,
-    h = 300;
+    h = 280;
     
 // margin.middle is distance from center line to each y-axis
 var margin = { top: 20, left: 20, bottom: 30, right: 20, middle: 28 };
@@ -61,6 +61,7 @@ populationData = [
         .append("text")
         .attr("id", "title")
         .style("text-anchor", "middle")
+        .style("font-size", "20px")
         .text("Population by age group");
 
 
@@ -79,12 +80,14 @@ var svg = d3.select('#container2').append('svg')
     var leftProvince = d3.select("#container2")
         .append("text")
         .attr("id", "leftProvince")
-        .text("Limburg, total population: " + format(provinceDataOne.population.total));
+        .text("Limburg, total population: " + format(provinceDataOne.population.total))
+        .style("font-size", "12px");
 
     rightProvince = d3.select("#container2")
     	.append("text")
     	.attr("id", "rightProvince")
-    	.text(provinceTwo + ", total population: " + format(provinceDataTwo.population.total));
+    	.text(provinceTwo + ", total population: " + format(provinceDataTwo.population.total))
+    	.style("font-size","12px");
 
 
 

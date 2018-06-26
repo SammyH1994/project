@@ -15,6 +15,9 @@
     	<li class="nav=item">
     	<a class="nav-link">Navigation</a>
     		</li>
+    		      <li class="nav-item">
+        <a class="nav-link" href="src/code/home.html">Home</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="index.html">Visualization</a>
       </li>
@@ -35,6 +38,7 @@
 			 integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
 			 crossorigin="anonymous">
 		<link rel = "stylesheet" href="https://bootswatch.com/4/minty/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	    <link href="src/code/index.css" rel="stylesheet"/>
 
 	     <!--scripts-->
@@ -55,6 +59,7 @@
     	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" 
     		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" 
     		crossorigin="anonymous"></script>
+    		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 		<script src="src/code/index.js"></script>
 		<script src="src/code/map.js"></script>
 		<script src="src/code/pyramid.js"></script>
@@ -66,7 +71,7 @@
 		<div class="jumbotron">
 			<h2> How is Limburg different?</h2>
  			<hr class="my-4"> 
-			<h4>This page visualizes the differences between Limburg and other provinces of the Netherlands.</h4>
+			<h5>This page visualizes the differences between Limburg and other provinces of the Netherlands.</h5>
 		</div>
 
 
@@ -76,46 +81,72 @@
 
 		<div class="container">
 			<div class="row">
+			<div class="col align-self-center"
+				<p>Hier komt een tekstje</p>
+				<p>en een plaatje?? </p>
+				<p> en een scroll knopje</p>
+				<p>bla bla bla</p>
+				<p> bla</p>
+				<p> bla</p>
+				<p> bla </p>
+									<a class="btn" href="#">
+					<i class="fa fa-chevron-circle-down" id="scrollDown" style="font-size:30px;color:#ff9999"></i>
+				</a>
+			</div>
+			</div>
+			<div class="row">
 
 				<div class="col align-self-center">
-				<div class="slidecontainer">
-			<p>Drag the slider to choose a year:</p>
-  			<input type="range" min="2006" max="2015" value="2010" class="slider" id="myRange">
- 			 <p><br>Current year: <span id="year"></span></p>
-			</div>
 					<div id="container1"></div>
 				</div>
-				<div class="col">
-					<div id="container2"></div>
-
-					<div id="container3">
-					<div class="alert alert-danger alert-dismissible fade show" id = "nodata" role="alert">
-					  <strong>Chart not updated!</strong> No data available
-					  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					    <span aria-hidden="true">&times;</span>
-					  </button>
-					</div>
-					<div class="dropdown">
- 			 		<button class="btn btn-primary dropdown-toggle" type="button" 
- 			 id="dropdownButton" data-toggle="dropdown" aria-haspopup="true" 
- 			 	aria-expanded="false">
-    		Topic</button>
-  			<div class="dropdown-menu">
-    			<a class="dropdown-item"  id = "birthsanddeaths">Births and Deaths</a>
-    			<a class="dropdown-item"  id = "causesofdeath">Causes of Death</a>
-    			<a class="dropdown-item"  id = "migration">Migration Background</a>
-    			<a class="dropdown-item"  id = "income">Income</a>
-    			<a class="dropdown-item"  id = "socialsecurity">Social Security</a>
-    			<a class="dropdown-item"  id = "education">Education</a>
-  			</div>
-		</div>
 			</div>
+			<div class="row">
+				<div class="col">
+					<div class="slidecontainer">
+						<p>Drag the slider to choose a year:</p>
+	  					<input type="range" min="2006" max="2015" value="2010" class="slider" id="myRange">
+	 			 	<p><br>Current year: <span id="year"></span></p>
 					</div>
-
-
 				</div>
+			</div>
+			<div class="row">
+				<div class="col-5">
+					<div id="container2"></div>
+				</div>
+				<div class="col-2">
+
+					<a class="btn" href="#">
+					<i class="fa fa-chevron-circle-up" id="scrollUp" style="font-size:30px;color:#ff9999"></i>
+				</a>
+				</div>
+				<div class="col-5">
+					<div id="container3">
+						<div class="alert alert-danger alert-dismissible fade show" id = "nodata" role="alert">
+						  <strong>Chart not updated!</strong> No data available
+						  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						    <span aria-hidden="true">&times;</span>
+						  </button>
+						</div>
+						<div class="dropdown">
+	 			 		<button class="btn btn-primary dropdown-toggle" type="button" 
+	 			 		id="dropdownButton" data-toggle="dropdown" aria-haspopup="true" 
+	 			 		aria-expanded="false">
+		    			Topic</button>
+			  			<div class="dropdown-menu">
+			    			<a class="dropdown-item"  id = "birthsanddeaths">Births and Deaths</a>
+			    			<a class="dropdown-item"  id = "causesofdeath">Causes of Death</a>
+			    			<a class="dropdown-item"  id = "migration">Migration Background</a>
+			    			<a class="dropdown-item"  id = "income">Income</a>
+			    			<a class="dropdown-item"  id = "socialsecurity">Social Security</a>
+			    			<a class="dropdown-item"  id = "education">Education</a>
+			  			</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
 			</div
-		</div>
 				<!-- drop down button to switch topic in bar chart-->
 		
 

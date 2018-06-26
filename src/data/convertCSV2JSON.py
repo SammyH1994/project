@@ -70,7 +70,7 @@ def convert_write_json(data, json_file):
 
 
 # List with years
-years = ["2006"]#, "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015"]
+years = ["2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015"]
 
 for i in range(len(years)):
 	name = "data_" + years[i]

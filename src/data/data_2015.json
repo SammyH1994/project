@@ -45,7 +45,6 @@
             "other": "42031"
         },
         "education": {
-            "total": "183512",
             "mbo": "154373",
             "hbo": "65446",
             "wo": "37206"
@@ -106,7 +105,6 @@
             "other": "1553"
         },
         "education": {
-            "total": "5660",
             "mbo": "5886",
             "hbo": "3211",
             "wo": "2132"
@@ -167,7 +165,6 @@
             "other": "1697"
         },
         "education": {
-            "total": "7765",
             "mbo": "7296",
             "hbo": "2222",
             "wo": "233"
@@ -228,7 +225,6 @@
             "other": "1383"
         },
         "education": {
-            "total": "5942",
             "mbo": "5063",
             "hbo": "1048",
             "wo": "207"
@@ -289,7 +285,6 @@
             "other": "2733"
         },
         "education": {
-            "total": "13611",
             "mbo": "12684",
             "hbo": "4589",
             "wo": "1293"
@@ -350,7 +345,6 @@
             "other": "635"
         },
         "education": {
-            "total": "4945",
             "mbo": "4572",
             "hbo": "1210",
             "wo": "273"
@@ -411,7 +405,6 @@
             "other": "4889"
         },
         "education": {
-            "total": "23466",
             "mbo": "19284",
             "hbo": "7325",
             "wo": "3595"
@@ -472,7 +465,6 @@
             "other": "2748"
         },
         "education": {
-            "total": "13857",
             "mbo": "9650",
             "hbo": "5274",
             "wo": "3808"
@@ -533,7 +525,6 @@
             "other": "6861"
         },
         "education": {
-            "total": "28080",
             "mbo": "22008",
             "hbo": "10386",
             "wo": "7253"
@@ -594,7 +585,6 @@
             "other": "8941"
         },
         "education": {
-            "total": "36814",
             "mbo": "32428",
             "hbo": "11966",
             "wo": "8361"
@@ -655,7 +645,6 @@
             "other": "1202"
         },
         "education": {
-            "total": "4430",
             "mbo": "3696",
             "hbo": "974",
             "wo": "113"
@@ -716,7 +705,6 @@
             "other": "6029"
         },
         "education": {
-            "total": "27640",
             "mbo": "22261",
             "hbo": "10610",
             "wo": "3870"
@@ -777,7 +765,6 @@
             "other": "3360"
         },
         "education": {
-            "total": "10943",
             "mbo": "8964",
             "hbo": "3797",
             "wo": "1672"
@@ -791,67 +778,6 @@
             "benefits": "361430",
             "untilAOW": "123260",
             "fromAOW": "238170"
-        }
-    },
-    {
-        "province": "",
-        "population": {
-            "total": "",
-            "male": "",
-            "female": "",
-            "from0to4": "",
-            "from5to10": "",
-            "from11to15": "",
-            "from16to20": "",
-            "from21to25": "",
-            "from26to30": "",
-            "from31to35": "",
-            "from36to40": "",
-            "from41to45": "",
-            "from46to50": "",
-            "from51to55": "",
-            "from56to60": "",
-            "from61to65": "",
-            "from66to70": "",
-            "from71to75": "",
-            "from76to80": "",
-            "from81to85": "",
-            "from86to90": "",
-            "from91to94": "",
-            "from95": ""
-        },
-        "migration": {
-            "dutch": "",
-            "non-dutch": "",
-            "western": "",
-            "non-western": ""
-        },
-        "birthsanddeaths": {
-            "births": "",
-            "deaths": ""
-        },
-        "causesofdeath": {
-            "growths": "",
-            "heart": "",
-            "respiratory": "",
-            "external": "",
-            "other": ""
-        },
-        "education": {
-            "total": "",
-            "mbo": "",
-            "hbo": "",
-            "wo": ""
-        },
-        "income": {
-            "total": "",
-            "male": "",
-            "female": ""
-        },
-        "socialsecurity": {
-            "benefits": "",
-            "untilAOW": "",
-            "fromAOW": ""
         }
     }
 ]

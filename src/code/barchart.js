@@ -4,7 +4,7 @@
 
   var marginBar = {top: 20, right: 100, bottom: 30, left: 30},
     widthBar = 420 - marginBar.left - marginBar.right,
-    heightBar = 300 - marginBar.top - marginBar.bottom;
+    heightBar = 350 - marginBar.top - marginBar.bottom;
 
 var svg, x0, x1, y, color, title;
 
@@ -43,6 +43,8 @@ title
 .append('text')
 .attr("id", "bartitel")
 .style("font-size", "15px")
+.style("fill", "grey")
+.style("font-size", "20px")
 .style("text-anchor", "middle")
 .attr("x", widthBar/2)
 .attr("y", 30);
@@ -55,21 +57,6 @@ title
 .attr('y', 50)
 .attr("x", widthBar/2);
 
-
-// title = d3.select("#container3").append("svg")
-//   .attr("width", widthBar + marginBar.left + marginBar.right)
-//   .attr("height", 50)
-//   .append("g")    
-//         .append("text")
-//         .attr("id", "title")
-//         .attr("dy", ".0em")
-//         .style("text-anchor", "middle")      
-
-// subtitle = d3.select("#container3")
-// .append("g")
-//             .append("tspan")
-//         .attr("id", "subtitlebar")
-//         .attr("dy", ".8em")
 
 
     svg = d3.select("#container3").append("svg")
@@ -200,6 +187,7 @@ barData.forEach(function(d) {
     .append("rect")
     .on("mouseover", tip.show)
     .on("mouseout", tip.hide)
+    .attr("class", "bar")
     .transition()
       .delay(function(d, i) {
         return 30 * i;
