@@ -86,4 +86,17 @@ To do:
 - Add a home page with a small explanation of the website
 - Add text in the "About" section
 
+### Day 5
+- Presented progress
+- Got tips on map hovering (not change opacity because this confuses the viewer on the values) and styling of page (placement of graphs)
+
 ## Week 4
+### Day 1
+- Worked on map hovering:
+Had an issue with changing the border color on hover, because the path is drawn in such a way that provinces are written on top of each other. Because of this, not all parts of all province' borders are changed on hover. Also attempted to get stripes on top of the color on clicking, but this did not work out.
+- Worked on changing the lay out of the page, added scroll buttons. When the map is clicked, the page scrolls down to the other graphs.
+- Worked on the Home page, where a simple bar chart displays the difference between Limburg and the Netherlands in the amount of baby's born with a birth defect.
+
+### Day 2
+- Worked on styling of the page: backgrounds, headers, fonts etc
+- Worked on the map hovering: on click stripes on top of the color now works. Still have to figure out what to do on hover. 
