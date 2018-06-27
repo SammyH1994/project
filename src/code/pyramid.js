@@ -105,10 +105,11 @@ var svg = d3.select('#container2').append('svg')
 					"</span></br><strong>Percentage:</strong> <span style='color:#b5f2d2'>" + d.provinceTwo + "</span>";})
 
 
-    var tipSvg = d3.select("body")
-    .append("svg")
-    .attr("width", w)
-    .attr("height", h);
+  //   var tipSvg = d3.select("")
+  //   .append("svg")
+  //   .attr("width", w)
+  //   .attr("height", h);
+  
    svg.call(tipLeft);
   svg.call(tipRight);
 
@@ -203,10 +204,8 @@ leftBars = leftBarGroup.selectAll('.bar.left')
 
   leftBars
   .transition()
-	    	.delay(function(d, i) {
-	    		return 30 * i;
-	      	})
-	      	.duration(1400)
+  .delay(1000)
+  .duration(800)
     .attr('class', 'bar left')
     .attr('x', 0)
     .attr('y', function(d) { return yScale(d.group); })
@@ -223,10 +222,8 @@ rightBars = rightBarGroup.selectAll('.bar.right')
 
   rightBars
   .transition()
-	    	.delay(function(d, i) {
-	    		return 30 * i;
-	      	})
-	.duration(1400)
+  .delay(1000)
+	.duration(800)
     .attr('class', 'bar right')
     .attr('x', 0)
     .attr('y', function(d) { return yScale(d.group); })
@@ -281,10 +278,8 @@ var maxValue = Math.max(
 
 		leftBars
   		.transition()
-	    	.delay(function(d, i) {
-	    		return 30 * i;
-	      	})
-	      	.duration(500)
+  		.delay(1000)
+	      	.duration(800)
     .attr('class', 'bar left')
     .attr('x', 0)
     .attr('y', function(d) { return yScale(d.group); })
@@ -310,10 +305,8 @@ var maxValue = Math.max(
 
 		rightBars
   		.transition()
-	    	.delay(function(d, i) {
-	    		return 30 * i;
-	      	})
-	      	.duration(800)
+  		.delay(1000)
+  		.duration(800)
     .attr('class', 'bar right')
     .attr('x', 0)
     .attr('y', function(d) { return yScale(d.group); })

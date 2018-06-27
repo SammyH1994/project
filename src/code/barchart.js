@@ -4,7 +4,7 @@
 
   var marginBar = {top: 20, right: 100, bottom: 30, left: 30},
     widthBar = 420 - marginBar.left - marginBar.right,
-    heightBar = 350 - marginBar.top - marginBar.bottom;
+    heightBar = 300 - marginBar.top - marginBar.bottom;
 
 var svg, x0, x1, y, color, title;
 
@@ -189,9 +189,8 @@ barData.forEach(function(d) {
     .on("mouseout", tip.hide)
     .attr("class", "bar")
     .transition()
-      .delay(function(d, i) {
-        return 30 * i;
-      })    .duration(800)
+    .delay(1000) 
+         .duration(800)
     .attr("width", x1.bandwidth())
     .attr("x", function(d) { return x1(d.name); })
     .attr("y", function(d) { return y(d.value); })
@@ -201,9 +200,7 @@ barData.forEach(function(d) {
 
     bars
     .transition()
-      .delay(function(d, i) {
-        return 30 * i;
-      })
+    .delay(1000)
           .duration(800)
     .attr("x", function(d){return x1(d.name)})
     .attr("width", x1.bandwidth())

@@ -92,6 +92,8 @@ var color = d3.scaleOrdinal()
   // add the x Axis
   svg.append("g")
       .attr("transform", "translate(0," + height + ")")
+       .attr("class", "x axis")
+
       .call(d3.axisBottom(xScale));
 
   // add the y Axis

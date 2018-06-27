@@ -65,15 +65,22 @@ var defs = mapSvg.append('svg:defs');
 
 defs.append("svg:pattern")
     .attr("id", "stripes")
-    .attr("width", 10)
-    .attr("height", 10)
+    .attr("width", 4)
+    .attr("height", 4)
     .attr("patternUnits", "userSpaceOnUse")
-    .append("svg:image")
-    .attr("xlink:href", "data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPSd3aGl0ZScvPgogIDxwYXRoIGQ9J00tMSwxIGwyLC0yCiAgICAgICAgICAgTTAsMTAgbDEwLC0xMAogICAgICAgICAgIE05LDExIGwyLC0yJyBzdHJva2U9J2JsYWNrJyBzdHJva2Utd2lkdGg9JzEnLz4KPC9zdmc+Cg==")
-    .attr("width", 10)
-    .attr("height", 10)
-    .attr("x", 0)
-    .attr("y", 0);
+    .append('rect')
+      .attr('width', 4)
+      .attr('height', 4)
+      .attr('x', 0)
+      .attr('x', 0);
+
+
+         d3.select('#stripes')
+         // .append("path")
+      .attr('d', 'M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2')
+      .attr('stroke', '#010101')
+      .attr('stroke-width', 0.3)
+      .attr("opacity", 0.5);
 
 
     mapSvg.selectAll("path")
@@ -85,28 +92,35 @@ defs.append("svg:pattern")
     .attr("stroke-width", "1px")
     .attr("id", function(d) {return d.properties.name})
 
-        .on("mousemove", createTooltip)
+        .on("mousemove",createTooltip)
         .on("mouseout",  function(d,i) {
         toolTip.classed("hidden", true);
         })
+
         .on("click", function(d){
             mapSvg.select("#"+currentProvince).style("fill", function(d) {
-        population = getPopulation(d.properties.name,data)
-        return color(population)
-        });
+                population = getPopulation(currentProvince, data)
+                return color(population)
+            });
             currentProvince = d.properties.name
+            defs.attr("fill", function(d) {
+                population = getPopulation(currentProvince, data)
+                return color(population)
+            });
 
-            mapSvg.select("#"+currentProvince).style("fill", "url(#stripes)");
+            mapSvg.select("#"+currentProvince)
+            .style("fill", "url(#stripes)");
+
 
             var province = d.properties.name
             if (province === "Limburg"){
                 province = "Nederland"
          }
-            currentProvince = province
+            // currentProvince = province
             provinceDataOne = getProvinceData(data, "Limburg")
             provinceDataTwo = getProvinceData(data, province)
-            updatePyramid(provinceDataOne, provinceDataTwo, currentProvince)
-            updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, titel, subtitel, "yes")
+            updatePyramid(provinceDataOne, provinceDataTwo, province)
+            updateBarchart(provinceDataOne, provinceDataTwo, province, topic, titel, subtitel, "yes")
 
         })
 
