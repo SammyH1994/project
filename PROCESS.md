@@ -107,3 +107,16 @@ Had an issue with changing the border color on hover, because the path is drawn 
 - Worked on an info pop up button for barchart & pyramid
 - Fixed issues with alert
 - Changed slider
+
+### Day 4
+- Finalized changing slider
+- Worked on code
+- Worked on styling
+- Worked on text on pages
+- Worked on pop up info about charts
+
+### Day 5
+- Worked on final styling/code
+- Worked on the texts on the pages
+- Worked on the report
+- Had a big issue with the new slider and the interaction with the map. This was only solved at the last minute with a not so elegant solution.
