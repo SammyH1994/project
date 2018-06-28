@@ -8,7 +8,7 @@ Names: 3
 Formatting: 3  
 Organization: 3  
 Flow: 2  
-Idiom: 3
+Idiom: 3  
 Structure: 2  
 
 ## Aandachtspunten
