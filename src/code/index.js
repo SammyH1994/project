@@ -1,7 +1,15 @@
+/*
+ *  Sammy Heutz
+ *  10445765
+ * 
+ *  index.js is the main script that creates all visualizations on the visualizations page.
+**/
+
+
+var currentProvince = "Nederland";
 
 window.onload = function() {
 
-	var currentProvince = "Nederland";
 	var topic = "income";
 	var titel = "Yearly income";
 	var subtitel = "x 1000 euro";
@@ -85,23 +93,27 @@ window.onload = function() {
 		var provinceDataTwo = getProvinceData(years[year], currentProvince);
 
 	  	// Create initial visualizations
-		createMap(nld, years[year], year, currentProvince, topic, titel, subtitel);
-		updateMap(nld, years[year], year, currentProvince, topic, titel, subtitel);
-		createPyramid(provinceDataOne, provinceDataTwo, currentProvince);
-		createBarchart();
-		updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, titel, subtitel);
+		
+		var pyramidSettings = createPyramid(provinceDataOne, provinceDataTwo, currentProvince);
+		var barSettings = createBarchart();
+		var mapSettings = createMap(nld, years[year], year, currentProvince, topic, titel, subtitel, pyramidSettings, barSettings)
+
+		updateMap(nld, years[year], year, currentProvince, topic, titel, subtitel, mapSettings);
+		updatePyramid(provinceDataOne, provinceDataTwo, currentProvince, pyramidSettings);
+		updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, titel, subtitel, barSettings);
 
 		// Change visualizations when year is changed
 		function changeYear(val){
 
 			year = val.getFullYear();
 		  	var data = years[year];
+
 		  	provinceDataOne = getProvinceData(data, "Limburg");
 		  	provinceDataTwo = getProvinceData(data, currentProvince);
-		  	
-		  	updateMap(nld, data, year, currentProvince, topic, titel, subtitel);
-		  	updatePyramid(provinceDataOne, provinceDataTwo, currentProvince);
-		  	updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, titel, subtitel);
+		  	updatePyramid(provinceDataOne, provinceDataTwo, currentProvince, pyramidSettings);
+		  	updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, titel, subtitel, barSettings);
+		  	updateMap(nld, data, year, currentProvince, topic, titel, subtitel, mapSettings);
+
 		}
 
 	// Change barchart when topic is chosen
@@ -139,9 +151,10 @@ window.onload = function() {
 		// Get correct data and update chart
 		var data = years[year]
 		var provinceDataTwo = getProvinceData(data, currentProvince)
-		updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, titel, subtitel)	
+		updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, titel, subtitel, barSettings)	
 	}
 
+		// Call changeTopic when dropdown item is chosen
 		document.getElementById("birthsanddeaths").onclick=changeTopic;
 		document.getElementById("causesofdeath").onclick=changeTopic;
 		document.getElementById("income").onclick=changeTopic;
@@ -168,33 +181,29 @@ window.onload = function() {
 		    }, 1000);
 		});
 
-	// Get the modal
-// Get the modal
-var modal = document.getElementById('myModal');
+	// Info button with pop up screen
+	var modal = document.getElementById('myModal');
+	var btn = document.getElementById("infoButton");
+	var span = document.getElementsByClassName("close")[0];
 
-// Get the button that opens the modal
-var btn = document.getElementById("infoButton");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on the button, open the modal 
-btn.onclick = function() {
-    modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-}
+	// When the user clicks on the button, open the modal 
+	btn.onclick = function() {
+	    modal.style.display = "block";
 	}
+
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+	    modal.style.display = "none";
+	}
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+	    if (event.target == modal) {
+	        modal.style.display = "none";
+    		}
+		}
+	}
+}
+
 
 

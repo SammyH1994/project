@@ -1,3 +1,11 @@
+/*
+ *  Sammy Heutz
+ *  10445765
+ * 
+ *  data.js contains helper functions for the visualizations.
+**/
+
+
 // Retrieve the data for a specific province
 function getProvinceData(data, province){
 
@@ -7,6 +15,7 @@ function getProvinceData(data, province){
 			}
 		}
 	}
+
 
 // Change values for causes of death, education and social security to be per 1000 people for better comparison
 function changeDataValues(data){
@@ -30,7 +39,8 @@ function changeDataValues(data){
 	}
 }
 
+
 // Function for easier d3 translations
 function translation(x,y) {
-  return 'translate(' + x + ',' + y + ')';
+	return 'translate(' + x + ',' + y + ')';
 }

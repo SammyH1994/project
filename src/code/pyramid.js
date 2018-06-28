@@ -1,18 +1,24 @@
-//https://stackoverflow.com/questions/25044997/creating-population-pyramid-with-d3-js
+/*
+ *  Sammy Heutz
+ *  10445765
+ * 
+ *  pyramid.js contains the functions that create the population pyramid
+ *
+ * Source:
+ *  //https://stackoverflow.com/questions/25044997/creating-population-pyramid-with-d3-js
+ *
+**/
 
-var svg, leftBars, rightBars, yScale, xScale, xScaleLeft, xScaleRight, populationData, rightProvince;
-// dicts?
-
-var widthPyramid = 450,
-    heightPyramid = 280;
-    
-// marginPyramid.middle is distance from center line to each y-axis
-var marginPyramid = { top: 20, left: 20, bottom: 30, right: 20, middle: 28 };
-
-var format = (d3.format(".3s"))
 
 // Create initial pyramid
 function createPyramid(provinceDataOne, provinceDataTwo, provinceTwo){
+
+	var widthPyramid = 450,
+    heightPyramid = 280;
+
+    var marginPyramid = { top: 20, left: 20, bottom: 30, right: 20, middle: 28 };
+
+    var format = d3.format(".3s")
 
 	// The width of each side of the chart
 	var regionWidth = widthPyramid/2 - marginPyramid.middle;
@@ -22,7 +28,7 @@ function createPyramid(provinceDataOne, provinceDataTwo, provinceTwo){
 	    pointB = widthPyramid - regionWidth;
 
 	// Transform data to correct format for pyramid
-	populationData = [
+	var populationData = [
 		{group: "0-5", "Limburg": provinceDataOne.population.from0to4, provinceTwo: provinceDataTwo.population.from0to4},
 		{group: "6-10", "Limburg": provinceDataOne.population.from5to10, provinceTwo: provinceDataTwo.population.from5to10},
 		{group: "11-15", "Limburg": provinceDataOne.population.from11to15, provinceTwo: provinceDataTwo.population.from11to15},
@@ -45,7 +51,6 @@ function createPyramid(provinceDataOne, provinceDataTwo, provinceTwo){
 		{group: "95+", "Limburg": provinceDataOne.population.from95, provinceTwo: provinceDataTwo.population.from95}
 	];
 
-
 	// Parse amount so that d3.max works
 	populationData.forEach(function(d) {
 		d["Limburg"] = parseFloat(d["Limburg"]).toFixed(2),
@@ -59,7 +64,6 @@ function createPyramid(provinceDataOne, provinceDataTwo, provinceTwo){
         .style("text-anchor", "middle")
         .style("font-size", "20px")
        	.text("Population by age group");
-
 
 	// Create SVG
 	var svg = d3.select('#container2').append('svg')
@@ -77,7 +81,7 @@ function createPyramid(provinceDataOne, provinceDataTwo, provinceTwo){
         .text("Limburg, total population: " + format(provinceDataOne.population.total))
         .style("font-size", "12px");
 
-    rightProvince = d3.select("#container2")
+    var rightProvince = d3.select("#container2")
     	.append("text")
     	.attr("id", "rightProvince")
     	.text(provinceTwo + ", total population: " + format(provinceDataTwo.population.total))
@@ -106,24 +110,23 @@ function createPyramid(provinceDataOne, provinceDataTwo, provinceTwo){
 	);
 
 	// Create the scales
-	xScale = d3.scaleLinear()
+	var xScale = d3.scaleLinear()
 		.domain([0, maxValue])
 		.range([0, regionWidth])
 		.nice();
 
-	xScaleLeft = d3.scaleLinear()
+	var xScaleLeft = d3.scaleLinear()
 		.domain([0, maxValue])
 		.range([regionWidth, 0]);
 
-	xScaleRight = d3.scaleLinear()
+	var xScaleRight = d3.scaleLinear()
 		.domain([0, maxValue])
 		.range([0, regionWidth]);
 
-	yScale = d3.scaleBand()
+	var yScale = d3.scaleBand()
 		.domain(populationData.map(function(d) { return d.group; }))
 		.rangeRound([heightPyramid, 0])
 		.padding(0.1)
-
 
 	// Set up the Axes
 	var yAxisLeft = d3.axisRight()
@@ -176,7 +179,7 @@ function createPyramid(provinceDataOne, provinceDataTwo, provinceTwo){
 		.call(xAxisRight);
 
 	// Draw the bars
-	leftBars = leftBarGroup.selectAll('.bar.left')
+	var leftBars = leftBarGroup.selectAll('.bar.left')
 		.data(populationData)
 		.enter()
 		.append('rect');
@@ -195,7 +198,7 @@ function createPyramid(provinceDataOne, provinceDataTwo, provinceTwo){
 	    .on("mouseover", tipLeft.show)
 		.on("mouseout", tipLeft.hide);	
 
-	rightBars = rightBarGroup.selectAll('.bar.right')
+	var rightBars = rightBarGroup.selectAll('.bar.right')
 		.data(populationData)
 		.enter().append('rect');
 
@@ -212,15 +215,41 @@ function createPyramid(provinceDataOne, provinceDataTwo, provinceTwo){
     rightBars
 	    .on("mouseover", tipRight.show)
 		.on("mouseout", tipRight.hide);	
+
+	// Return pyramid settings for update
+
+	var pyramidSettings = {
+		widthPyramid: widthPyramid,
+		heightPyramid: heightPyramid,
+		leftBars: leftBars,
+		rightBars: rightBars,
+		yScale: yScale,
+		xScale: xScale,
+		populationData: populationData,
+		rightProvince: rightProvince,
+		format: format
+	};
+
+	return pyramidSettings;
 }
 
 
 // Update the pyramid on data change
-function updatePyramid(provinceDataOne, provinceDataTwo, provinceTwo){
+function updatePyramid(provinceDataOne, provinceDataTwo, provinceTwo, settings){
+
+	// Pyramid settings
+	var widthPyramid = settings.widthPyramid;
+	var heightPyramid = settings.heightPyramid;
+	var leftBars = settings.leftBars;
+	var rightBars = settings.rightBars;
+	var yScale = settings.yScale;
+	var xScale = settings.xScale;
+	var populationData = settings.populationData;
+	var rightProvince = settings.rightProvince;
+	var format = settings.format;
 
 	var ageGroups = ["from0to4", "from5to10", "from11to15", "from16to20", "from21to25", "from26to30", "from31to35", "from36to40", "from41to45", "from46to50", "from51to55", "from56to60", "from61to65",
 	"from66to70", "from71to75", "from76to80", "from81to85", "from86to90", "from91to94", "from95"]
-
 
 	for (var i = 0; i < populationData.length; i ++){
 		populationData[i]["Limburg"] = provinceDataOne["population"][ageGroups[i]];
