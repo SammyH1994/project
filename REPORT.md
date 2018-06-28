@@ -30,8 +30,36 @@ Below the map and the pyramid, the user can click the button "Extra information"
 
 When no data is available, an alert message is shown (this only happens with "social security" barchart data for the year 2006.
 
-In order to implement the functionality in my code, several javascript files with different functionality have been implemented, consisting of several functions. 
-These are shown in the table below.
+In order to implement the functionality in my code, several javascript files with different functionality have been implemented, consisting of several files and functions. All visualizations have their own js file, with their own functions. Additionally, there is an index.js file that handles the flow of the program. A file called data.js contains a few additional functions, and the file homebar.js is a separate file that creates the visualization on the homepage.
+
+The file/function structure is futher shown in the table below.
+
+### Function diagram
+|Function Name           |Description                                                        |Filename   | 
+|------------------------|-------------------------------------------------------------------|-----------|
+|***Map***               |                                                                   |           |                               
+|createMap               |creates the initial map                                            |map.js     | 
+|updateMap               |updates the map                                                    |map.js     |
+|getPopulation           |gets the population size for a certain province                    |map.js     |
+|                        |                                                                   |           |                               
+|***Population Pyramid***|                                                                   |           |                               
+|createPyramid           |creates the initial population pyramid                             |pyramid.js | 
+|updatePyramid           |updates the population pyramid                                     |pyramid.js |
+|                        |                                                                   |           |                               
+|***Bar chart***         |                                                                   |           |                               
+|createBarchart          |creates the initial bar chart                                      |barchart.js| 
+|updateBarchart          |updates the bar chart                                              |barchart.js|
+|                        |                                                                   |           |                               
+|***General functions*** |                                                                   |           |                               
+|getProvinceData         |retrieves the data for a chosen province                           |data.js    |
+|changeDataValues        |changes the data of 3 topics to be per 1000 people                 |data.js    |
+|translation             |function for d3.translation                                        |data.js    |
+|***Event listeners***   |                                                                   |           |
+|on.("click")            |will update the visualizations when the map is clicked             |map.js   |
+|changetopic             |will update the bar chart on dropdown selection                    |index.js   |
+|changeYear              |will update the visualizations when a year is chosen via the slider|data.js   |
+                                          
+Table 1: Diagram with components
 
 ## Challenges
 Clearly describe challenges that your have met during development. Document all important changes that your have made with regard to your design document (from the PROCESS.md). Here, we can see how much you have learned in the past month.
