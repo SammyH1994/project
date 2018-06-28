@@ -35,12 +35,14 @@ Image 1: Screenshot of homepage
 <img src="https://github.com/SammyH1994/project/blob/master/doc/screenshot1.png" />
 Image 2: Screenshot of visualizations
 
-<img src="https://github.com/SammyH1994/project/blob/master/doc/screenshot1.png" />
+<img src="https://github.com/SammyH1994/project/blob/master/doc/screenshot3.png" />
 Image 3: Screenshot of About section
 
-#### Data sources
+### Data sources
 The data that was used is CBS regional data.  
 [Data source](https://opendata.cbs.nl/statline/#/CBS/nl/dataset/70072ned/table?ts=1528142338597)
 
-#### Author
+All external sources that have been used for the code are noted atop of the js file that utilizes it.
+
+### Author
 Sammy Heutz, 10445765
