@@ -18,7 +18,7 @@ This question is interesting not only for the population of Limburg (and specifi
 ### Solution
 This visualization aims to compare Limburg to the other provinces of the Netherlands with regards to several variables: population size, population structure, births and deaths, migration background, causes of death, income, social security, and education.
 
-This is accomplished by having three interactive visualizations: a map of the Netherlands that visualizes population size per province, two population pyramids that compare Limburg to a certain province that is chosen by clicking on the map, and a grouped barchart that shows the data of a chosen topic for both Limburg and a chosen province of the map. A sketch of the visualization can be found below.
+This is accomplished by having three interactive visualizations: a map of the Netherlands that visualizes population size per province, two population pyramids that compare Limburg to a certain province that is chosen by clicking on the map, and a grouped barchart that shows the data of a chosen topic for both Limburg and a chosen province of the map. The section visualization features further explains the features of the website. The section screenshots contains several screenshots of the website.
 
 ### Visualization features
 - A year between 2006 and 2015 can be chosen using the slider. This will change all three visualizations to show the data for the respective year. If data for a certain year is unavailable, the user will be notified.
@@ -27,6 +27,16 @@ This is accomplished by having three interactive visualizations: a map of the Ne
 - If Limburg is clicked, the population pyramid and bar chart will show the values for the average of the Netherlands compared to Limburg.
 - The population pyramid shows the population structure (per age) for Limburg and the chosen province. On hover, a certain bar will light up and the data will be shown in a d3 tip.
 - The grouped bar chart shows data on a topic that is chosen using the drop-down menu, for both Limburg and the chosen province. Each topic has a few related variables. For instance, births vs deaths has information on both births and deaths, and migration background has information about the total amount of immigrants and the amount of both Western and non-Western immigrants. Again, hovering over a bar will highlight the bar and show the data in a tip.
+
+### Screenshots
+<img src="https://github.com/SammyH1994/project/blob/master/doc/screenshot2.png" />
+Image 1: Screenshot of homepage
+
+<img src="https://github.com/SammyH1994/project/blob/master/doc/screenshot1.png" />
+Image 2: Screenshot of visualizations
+
+<img src="https://github.com/SammyH1994/project/blob/master/doc/screenshot1.png" />
+Image 3: Screenshot of About section
 
 #### Data sources
 The data that was used is CBS regional data.  
