@@ -28,8 +28,9 @@ This is accomplished by having three interactive visualizations: a map of the Ne
 - The population pyramid shows the population structure (per age) for Limburg and the chosen province. On hover, a certain bar will light up and the data will be shown in a d3 tip.
 - The grouped bar chart shows data on a topic that is chosen using the drop-down menu, for both Limburg and the chosen province. Each topic has a few related variables. For instance, births vs deaths has information on both births and deaths, and migration background has information about the total amount of immigrants and the amount of both Western and non-Western immigrants. Again, hovering over a bar will highlight the bar and show the data in a tip.
 
-### Prerequisites
-
 #### Data sources
-The data that was used is CBS regional data. This data will have to be transformed from CSV format to JSON format.  
+The data that was used is CBS regional data.  
 [Data source](https://opendata.cbs.nl/statline/#/CBS/nl/dataset/70072ned/table?ts=1528142338597)
+
+#### Author
+Sammy Heutz, 10445765
