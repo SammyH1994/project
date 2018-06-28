@@ -3,30 +3,34 @@
  *  10445765
  * 
  *  index.js is the main script that creates all visualizations on the visualizations page.
+ *
+ * Sources:
+ * //https://bl.ocks.org/johnwalley/e1d256b81e51da68f7feb632a53c3518
+ * //https://www.w3schools.com/howto/howto_css_modals.asp
+ * //https://api.jquery.com/scroll/
 **/
 
 
-var currentProvince = "Nederland";
-
 window.onload = function() {
 
+	var currentProvince = "Nederland";
 	var topic = "income";
 	var titel = "Yearly income";
 	var subtitel = "x 1000 euro";
 	var year = "2006";
 	
 	// Retrieve data
-	var data2006 = "../data/data_2006.json";
-	var data2007 = "../data/data_2007.json";
-	var data2008 = "../data/data_2008.json";
-	var data2009 = "../data/data_2009.json";
-	var data2010 = "../data/data_2010.json";
-	var data2011 = "../data/data_2011.json";
-	var data2012 = "../data/data_2012.json";
-	var data2013 = "../data/data_2013.json";
-	var data2014 = "../data/data_2014.json";
-	var data2015 = "../data/data_2015.json";
-	var nld = "../data/nld.json";
+	var data2006 = "../../data/data_2006.json";
+	var data2007 = "../../data/data_2007.json";
+	var data2008 = "../../data/data_2008.json";
+	var data2009 = "../../data/data_2009.json";
+	var data2010 = "../../data/data_2010.json";
+	var data2011 = "../../data/data_2011.json";
+	var data2012 = "../../data/data_2012.json";
+	var data2013 = "../../data/data_2013.json";
+	var data2014 = "../../data/data_2014.json";
+	var data2015 = "../../data/data_2015.json";
+	var nld = "../../data/nld.json";
 
 	d3.queue()
 		.defer(d3.json, data2006)
@@ -75,8 +79,9 @@ window.onload = function() {
 		    .tickFormat(d3.timeFormat('%Y'))
 		    .tickValues(sliderData)
 		    .on('onchange', val => {
-		      d3.select("p#slidervalue").text(d3.timeFormat('%Y')(val));
-		      changeYear(val);
+		    	var slidervalue = d3.select(".parameter-value").text()
+
+		      	changeYear(slidervalue, currentProvince, settings, topic, slider);
 		    });
 
 	  	var g = d3.select("div#slider").append("svg")
@@ -93,28 +98,24 @@ window.onload = function() {
 		var provinceDataTwo = getProvinceData(years[year], currentProvince);
 
 	  	// Create initial visualizations
-		
 		var pyramidSettings = createPyramid(provinceDataOne, provinceDataTwo, currentProvince);
 		var barSettings = createBarchart();
-		var mapSettings = createMap(nld, years[year], year, currentProvince, topic, titel, subtitel, pyramidSettings, barSettings)
+		var mapSettings = createMap(nld, years[year], year, currentProvince, topic, titel, subtitel);
 
-		updateMap(nld, years[year], year, currentProvince, topic, titel, subtitel, mapSettings);
+		var settings = {
+			nld: nld,
+			years : years,
+			pyramidSettings: pyramidSettings,
+			barSettings: barSettings,
+			mapSettings: mapSettings,
+			topic: topic,
+			titel: titel,
+			subtitel: subtitel
+		};
+
+		updateMap(nld, years[year], year, currentProvince, topic, titel, subtitel, settings, slider);
 		updatePyramid(provinceDataOne, provinceDataTwo, currentProvince, pyramidSettings);
 		updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, titel, subtitel, barSettings);
-
-		// Change visualizations when year is changed
-		function changeYear(val){
-
-			year = val.getFullYear();
-		  	var data = years[year];
-
-		  	provinceDataOne = getProvinceData(data, "Limburg");
-		  	provinceDataTwo = getProvinceData(data, currentProvince);
-		  	updatePyramid(provinceDataOne, provinceDataTwo, currentProvince, pyramidSettings);
-		  	updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, titel, subtitel, barSettings);
-		  	updateMap(nld, data, year, currentProvince, topic, titel, subtitel, mapSettings);
-
-		}
 
 	// Change barchart when topic is chosen
 	function changeTopic(){
@@ -149,9 +150,9 @@ window.onload = function() {
 		}
 
 		// Get correct data and update chart
-		var data = years[year]
-		var provinceDataTwo = getProvinceData(data, currentProvince)
-		updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, titel, subtitel, barSettings)	
+		var data = years[year];
+		var provinceDataTwo = getProvinceData(data, currentProvince);
+		updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, titel, subtitel, barSettings);	
 	}
 
 		// Call changeTopic when dropdown item is chosen

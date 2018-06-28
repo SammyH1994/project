@@ -5,29 +5,31 @@
  * Index.css is the stylesheet for index.html
 **/
 
+/* Text styles*/
 header {
-	text-align: center;
+    text-align: center;
 }
 
 body{
-	text-align: center;
+    text-align: center;
     background: url("../../doc/achtergrond3.jpg");
     background-size:100%;
     background-attachment: fixed;
 }
 
 h2, h3, h4, h5 {
- font-family: 'Lobster', Georgia, Times, serif;
- line-height: 100px;
- color: grey;
+    font-family: 'Lobster', Georgia, Times, serif;
+    line-height: 100px;
+    color: grey;
 }
 
 h1, h6 { 
-   font-family: 'Lobster', Georgia, Times, serif;
- line-height: 100px;
+    font-family: 'Lobster', Georgia, Times, serif;
+    line-height: 100px;
     text-shadow: 1px 1px 1px #fbb4ae;
     color: white;
 }
+
 p, div {
  font-family: 'Cabin', Helvetica, Arial, sans-serif;
  font-size: 15px;
@@ -39,6 +41,7 @@ p, div {
   color:white;
 }
 
+/* Containers for page*/
 .container-narrow {
     position:relative;
     height:100%;
@@ -46,20 +49,20 @@ p, div {
     margin-left:5%;
     margin-right:5%;
     margin-bottom:0%;
-   
-
 }
 
+/* Block that contains background*/
 #block{
-  position:absolute;
-  top:0;
-  left:0;
-      height:100%;
-      width:100%;
-  background-image: url("../../doc/cream_dust.png");
-  opacity:0.95;
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    background-image: url("../../doc/cream_dust.png");
+    opacity:0.95;
 }
 
+/* Footer */
 .footer {
     position: fixed;
     left: 0;
@@ -71,137 +74,104 @@ p, div {
     text-align: center;
 }
 
+.clear { 
+    clear: both; 
+    height: 80px;
+}
+
+/* Jumbotron */
 .jumbotron{
     background-image: url("../../doc/foot2.jpg");
     background-size: 100%;
     max-width:100%;
-    max-height:100%;
+    max-height:280px;
     opacity: 0.8;
     position: relative;
-
-
 }
+
 .container {
-/*  max-width: 1200px;
-*/
-  width:100%;
-
+    width:100%;
 }
+
 .row{
-  width:100%;
+    width:100%;
 }
 
+/* Containers for visualizations */
 #container1 { 
-	position: relative; 
-	width: 500px;
-	height: 500px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 2.5%;
-	margin-bottom: 2.5%;
-	background-color: transparent;
+  	position: relative; 
+  	width: 500px;
+  	height: 450px;
+  	margin-left: auto;
+  	margin-right: auto;
+  	margin-top: 2.5%;
+  	margin-bottom: 2.5%;
+  	background-color: transparent;
 }
 
 #container2 {
-	position: relative; 
-	width: 480px;
-	height: 400px;
-	margin-left:auto;
-	margin-right: auto;
-	margin-top: 2.5%;
-	margin-bottom: 2.5%;
-	background-color: transparent;
-	box-shadow: 1px 1px 1px 2px rgb(217, 217, 217);
+  	position: relative; 
+  	width: 480px;
+  	height: 450px;
+  	margin-left:auto;
+  	margin-right: auto;
+  	margin-top: 2.5%;
+  	margin-bottom: 2.5%;
+  	background-color: transparent;
+  	box-shadow: 1px 1px 1px 2px rgb(217, 217, 217);
 }
 #container3 {
-	position: relative; 
-	width: 480px;
-	height: 400px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 2.5%;
-	margin-bottom: 2.5%;
-	background-color: transparent;
-	box-shadow: 1px 1px 1px 2px rgb(217, 217, 217);
+  	position: relative; 
+  	width: 480px;
+  	height: 450px;
+  	margin-left: auto;
+  	margin-right: auto;
+  	margin-top: 2.5%;
+  	margin-bottom: 2.5%;
+  	background-color: transparent;
+  	box-shadow: 1px 1px 1px 2px rgb(217, 217, 217);
 }
 
 #container4 {
-  position: relative; 
-  width: 500px;
-  height: 450px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2.5%;
-  margin-bottom: 2.5%;
-  background-color: transparent;
-  box-shadow: 1px 1px 1px 2px rgb(217, 217, 217);
+    position: relative; 
+    width: 500px;
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    background-color: transparent;
+    box-shadow: 1px 1px 1px 2px rgb(217, 217, 217);
 }
 
+/* Axes */
 .x.axis text{
-  fill: grey;
+    fill: grey;
 }  
 
-.clear { 
-	clear: both; 
-	height: 80px;
+.axis line,
+.axis path {
+    shape-rendering: crispEdges;
+    fill: transparent;
+    stroke: #555;
 }
 
+.axis text {
+    font-size: 11px;
+}
 
+/* Dropdown menu */
 .dropdown:hover .dropdown-item {
-	cursor:pointer;
+    cursor:pointer;
 }
-
-.slidecontainer {
-    width: 100%; /* Width of the outside container */
-    height:100px;
-}
-
-
 
 .dropdown {
-	margin-top:1%;
-	margin-right:1%;
-  float:right;
+    margin-top:1%;
+    margin-right:1%;
+    float:right;
 }
 
-.diagonal-stripe-1 {
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPSd3aGl0ZScvPgogIDxwYXRoIGQ9J00tMSwxIGwyLC0yCiAgICAgICAgICAgTTAsMTAgbDEwLC0xMAogICAgICAgICAgIE05LDExIGwyLC0yJyBzdHJva2U9JyM1NTk0ZTcnIHN0cm9rZS13aWR0aD0nMScvPgo8L3N2Zz4K");
-  background-repeat: repeat;
-}
-
-.d3-tip {
-  line-height: 1;
-  font-weight: bold;
-  padding: 2px;
-  color: black;
-  border-radius: 0px;
-
-}
-
-path{
-	fill-opacity: 1.0;
-}
-
-path:hover {
-	cursor:pointer;
-			}
-
-.hidden {
-    display: none;
-    }
-
-.tooltip {
-	  color: #222; 
-	  background: #fff; 
-	  border-radius: 3px; 
-	  box-shadow: 0px 0px 2px 0px #a6a6a6; 
-	  padding: .2em; 
-	  text-shadow: #f5f5f5 0 1px 0;
-	  opacity: 0.9; 
-
-}
-
-
+/* Titles etc*/
 #title{
 	font-size: 20px;
 }
@@ -219,74 +189,73 @@ path:hover {
 #rightProvince{
 	float:right;
 	margin-right:40px;
-
 }
 
-
-
-#mapsvg{
-	margin-left: 20px;
-}
+/* Bars*/
 .bar {
-  fill-opacity: 0.7;
+   fill-opacity: 0.7;
 }
 .bar.left {
-  fill: #b5f2d2; 
+   fill: #b5f2d2; 
 }
 .bar.right {
-  fill: #008545;
+   fill: #008545;
 }
 
 .bar:hover{
-	fill-opacity: 1.0;
-	cursor: pointer;
+	 fill-opacity: 1.0;
+	 cursor: pointer;
 }
 
-
-.axis line,
-.axis path {
-  shape-rendering: crispEdges;
-  fill: transparent;
-  stroke: #555;
-}
-.axis text {
-  font-size: 11px;
+/* Map */
+#mapsvg{
+    margin-left: 20px;
 }
 
-    .d3-tip {
-      line-height: 1;
-      padding: 6px;
-      background: rgba(0, 0, 0, 0.8);
-      color: #fff;
-      border-radius: 4px;
-      font-size: 12px;
-    }
+path{
+   fill-opacity: 1.0;
+}
+
+path:hover {
+   cursor:pointer;
+}
+
+/* Tooltip*/
+.d3-tip {
+    line-height: 1;
+    padding: 6px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 4px;
+    font-size: 12px;
+}
  
-    /* Creates a small triangle extender for the tooltip */
-    .d3-tip:after {
-      box-sizing: border-box;
-      display: inline;
-      font-size: 10px;
-      width: 100%;
-      line-height: 1;
-      color: rgba(0, 0, 0, 0.8);
-      content: "\25BC";
-      position: absolute;
-      text-align: center;
-    }
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+    box-sizing: border-box;
+    display: inline;
+    font-size: 10px;
+    width: 100%;
+    line-height: 1;
+    color: rgba(0, 0, 0, 0.8);
+    content: "\25BC";
+    position: absolute;
+    text-align: center;
+}
  
-    /* Style northward tooltips specifically */
-    .d3-tip.n:after {
-      margin: -2px 0 0 0;
-      top: 100%;
-      left: 0;
-    }
+/* Style northward tooltips specifically */
+.d3-tip.n:after {
+    margin: -2px 0 0 0;
+    top: 100%;
+    left: 0;
+}
 
-
+/* Alert */
 #nodata{
-  display:none;
+    display:none;
 }
 
+/* Modal */
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -324,21 +293,4 @@ path:hover {
     cursor: pointer;
 }
 
-/*#infoCol {
-   -webkit-columns: 3 150px;
-  -moz-columns: 3 150px;
-  columns: 3 150px;
-  -webkit-column-gap: 5em;
-  -moz-column-gap: 5em;
-  column-gap: 5em;
-  -webkit-column-rule-width: 4px;
-  -moz-column-rule-width: 4px;
-  column-rule-width: 4px;
-  -webkit-column-rule-color: grey;
-  -moz-column-rule-color: grey;
-  column-rule-color: grey;
-  margin: 2em auto 7em;
-    -webkit-column-rule-style: dotted;
-  -moz-column-rule-style: dotted;
-  column-rule-style: dotted;
-}*/
+

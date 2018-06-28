@@ -1,10 +1,18 @@
+/*
+ *  Sammy Heutz
+ *  10445765
+ * 
+ *  homebar.js creates the barchart on the homepage
+ *
+**/
+
 window.onload = function() {
 
 	var margin = {top: 20, right:20, bottom: 30, left: 30},
     width = 420 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
-    // Data
+    // Create data
 	var barData = [
 		{"province": "Nederland",
 		"value": 2.84},
@@ -19,7 +27,6 @@ window.onload = function() {
 	    .append('g')
 		.attr('id', 'title');
 
-
 	// Append title and subtitle
 	titleSvg
 		.append('text')
@@ -32,7 +39,6 @@ window.onload = function() {
 		.attr("y", 30)
 		.text("Baby's born with birth defects");
 
-
 	// Create SVG for barchart
 	 var svg = d3.select("#container4").append("svg")
 	    .attr("width", width + margin.left + margin.right)
@@ -41,14 +47,14 @@ window.onload = function() {
 	    .attr("transform", translation(margin.left, margin.top));
 
 	// Append text on Y axis
-	svg.append("text")
+	svg
+		.append("text")
 		.attr("transform", "rotate(-90)")
 		.attr("y", 6)
 		.attr("dy", ".71em")
 		.style("text-anchor", "end")
 		.style("font-size", "10px")
 		.text("Percentage");
-
 
     // Set the scales
 	var xScale = d3.scaleBand()
@@ -72,7 +78,6 @@ window.onload = function() {
 	var color = d3.scaleOrdinal()
 		.range(["#fbb4ae","#decbe4"]);
 
-
 	// Create bars
 	svg.selectAll(".bar")
 		.data(barData)
@@ -87,12 +92,14 @@ window.onload = function() {
 		.on("mouseout", tip.hide);
 
 	// Add the x Axis
-	svg.append("g")
+	svg
+		.append("g")
 		.attr("transform", "translate(0," + height + ")")
 		.attr("class", "x axis")
 		.call(d3.axisBottom(xScale));
 
 	// Add the y Axis
-	svg.append("g")
+	svg
+		.append("g")
 		.call(d3.axisLeft(yScale));
 }

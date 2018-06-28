@@ -39,6 +39,28 @@ function changeDataValues(data){
 	}
 }
 
+// Change visualizations when year is changed
+function changeYear(year, currentProvince, settings, slider){
+
+	var nld = settings.nld;
+	var years = settings.years;
+	var pyramidSettings = settings.pyramidSettings;
+	var barSettings = settings.barSettings;
+	var mapSettings = settings.mapSettings;
+	var topic = settings.topic;
+	var titel = settings.titel;
+	var subtitel = settings.subtitel
+
+  	var data = years[year];
+
+  	// Update visualizations
+  	provinceDataOne = getProvinceData(data, "Limburg");
+  	provinceDataTwo = getProvinceData(data, currentProvince);
+  	updatePyramid(provinceDataOne, provinceDataTwo, currentProvince, pyramidSettings);
+  	updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, titel, subtitel, barSettings);
+  	updateMap(nld, data, year, currentProvince, topic, titel, subtitel, settings, slider);
+
+}
 
 // Function for easier d3 translations
 function translation(x,y) {

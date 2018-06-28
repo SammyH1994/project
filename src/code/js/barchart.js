@@ -16,7 +16,7 @@ function createBarchart(){
 
     var marginBar = {top: 20, right: 100, bottom: 30, left: 30},
         widthBar = 420 - marginBar.left - marginBar.right,
-        heightBar = 290 - marginBar.top - marginBar.bottom;
+        heightBar = 340 - marginBar.top - marginBar.bottom;
 
     // Set scales
     var x0 = d3.scaleBand()
@@ -74,7 +74,8 @@ function createBarchart(){
         .attr("class", "x axis")
         .attr("transform", translation(0, heightBar));
 
-    svg.append("g")
+    svg
+        .append("g")
         .attr("class", "y axis")
         .style('opacity','0');
 
@@ -148,7 +149,7 @@ function updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic
         title.selectAll("#bartitel")
             .text(bartitel);
         title.selectAll("#barsubtitel")
-  .         text(barsubtitel);
+            .text(barsubtitel);
 
         var categoriesNames = barData.map(function(d) { return d.province; });
         var rateNames = Object.keys(barData[0][topic]);
@@ -256,13 +257,15 @@ function updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic
             .attr("class", "legend")
             .attr("transform", function(d, i) { return  translation(0, i * 20); });
 
-        legend.append("rect")
+        legend
+            .append("rect")
             .attr("x", 0)
             .attr("width", 18)
             .attr("height", 18)
             .style("fill", function (d,i) { return color(i)});
 
-        legend.append("text")
+        legend
+            .append("text")
             .attr("x", 0)
             .attr("y", 9)
             .attr("dy", ".35em")

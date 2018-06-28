@@ -57,12 +57,28 @@ function createPyramid(provinceDataOne, provinceDataTwo, provinceTwo){
 		d.provinceTwo = parseFloat(d.provinceTwo).toFixed(2);
 	});
 
-	// Create title for map
-    var pyramidTitle = d3.select("#container2")        
+
+	    // Create title
+    var titleSvg = d3.select("#container2")
+        .append('svg')
+        .attr("width", widthPyramid)
+        .attr("height", 60)
+        .append('g');
+
+    var title = titleSvg
+        .append('g')
+        .attr('id', 'title');
+
+    var pyramidTitle = titleSvg        
         .append("text")
         .attr("id", "title")
         .style("text-anchor", "middle")
+        .style("font-size", "15px")
+        .style("fill", "grey")
         .style("font-size", "20px")
+        .style("text-anchor", "middle")
+        .attr("x", widthPyramid/2)
+        .attr("y", 30)
        	.text("Population by age group");
 
 	// Create SVG
@@ -155,7 +171,8 @@ function createPyramid(provinceDataOne, provinceDataTwo, provinceTwo){
 		.attr('transform', translation(pointB, 0));
 
 	// Draw the axes
-	svg.append('g')
+	svg
+		.append('g')
 		.attr('class', 'axis y left')
 		.attr('transform', translation(pointA, 0))
 		.call(yAxisLeft)
@@ -163,17 +180,20 @@ function createPyramid(provinceDataOne, provinceDataTwo, provinceTwo){
 		.attr("id", "yAxis")
 		.style('text-anchor', 'middle');
 
-	svg.append('g')
+	svg
+		.append('g')
 		.attr('class', 'axis y right')
 		.attr('transform', translation(pointB, 0))
 		.call(yAxisRight);
 
-	svg.append('g')
+	svg
+		.append('g')
 		.attr('class', 'axis x left')
 		.attr('transform', translation(0, heightPyramid))
 		.call(xAxisLeft);
 
-	svg.append('g')
+	svg
+		.append('g')
 		.attr('class', 'axis x right')
 		.attr('transform', translation(pointB, heightPyramid))
 		.call(xAxisRight);
@@ -217,7 +237,6 @@ function createPyramid(provinceDataOne, provinceDataTwo, provinceTwo){
 		.on("mouseout", tipRight.hide);	
 
 	// Return pyramid settings for update
-
 	var pyramidSettings = {
 		widthPyramid: widthPyramid,
 		heightPyramid: heightPyramid,
@@ -321,6 +340,7 @@ function updatePyramid(provinceDataOne, provinceDataTwo, provinceTwo, settings){
 
 	// Change right province text
     rightProvince
-    	.text(provinceTwo + ", total population: " + format(provinceDataTwo.population.total));
+    	.text(provinceTwo + ", total population: " + 
+    		format(provinceDataTwo.population.total));
 }
 
