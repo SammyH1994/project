@@ -230,8 +230,8 @@ function updateMap(nld, data, year, currentProvince, topic, titel, subtitel, set
                 .tickValues(sliderData)
                 .default(yearDate)
                 .on('onchange', val => {
-                    var slidervalue = d3.select(".parameter-value").text()
-                    changeYear(slidervalue, province, settings, topic, slider);
+                    var sliderValue = d3.select(".parameter-value").text()
+                    changeYear(sliderValue, province, settings, topic, slider);
                 });
 
             d3.select("div#slider").select("svg").remove();

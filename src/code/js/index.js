@@ -79,9 +79,9 @@ window.onload = function() {
 		    .tickFormat(d3.timeFormat('%Y'))
 		    .tickValues(sliderData)
 		    .on('onchange', val => {
-		    	var slidervalue = d3.select(".parameter-value").text()
+		    	var sliderValue = d3.select(".parameter-value").text()
 
-		      	changeYear(slidervalue, currentProvince, settings, topic, slider);
+		      	changeYear(sliderValue, currentProvince, settings, topic, slider);
 		    });
 
 	  	var g = d3.select("div#slider").append("svg")
