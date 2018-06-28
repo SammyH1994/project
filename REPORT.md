@@ -24,9 +24,14 @@ On the visualizations page, the user first sees a small text explanation about t
 
 The user can then click on the map, choosing a province of interest. When clicking on the map, the page will scroll down to the second and third visualizations: the pyramid and the barchart. Limburg will then be compared with the chosen province (If Limburg is clicked, the whole Netherlands will be used for comparison). These two charts can also be updated by choosing a year using the slider. Additionally, in the bar chart the user is able to choose a topic using the drop down menu. 
 
+The user can scroll back to the map using the pink scroll button. 
+
+Below the map and the pyramid, the user can click the button "Extra information". This button creates a pop up window with additional information about the population pyramid and the barchart.
+
+When no data is available, an alert message is shown (this only happens with "social security" barchart data for the year 2006.
 
 In order to implement the functionality in my code, several javascript files with different functionality have been implemented, consisting of several functions. 
-Clearly describe the technical design: how is the functionality implemented in your code? This should be like your DESIGN.md but updated to reflect the final application. First, give a high level overview, which helps us navigate and understand the total of your code (which components are there?). Second, go into detail, and describe the modules/classes (apps) files/functions (data) and how they relate.
+These are shown in the table below.
 
 ## Challenges
 Clearly describe challenges that your have met during development. Document all important changes that your have made with regard to your design document (from the PROCESS.md). Here, we can see how much you have learned in the past month.
