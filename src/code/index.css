@@ -11,20 +11,32 @@ header {
 
 body{
 	text-align: center;
-    background: url("../../doc/achtergrond.jpg") repeat 0 0;
+    background: url("../../doc/achtergrond3.jpg");
     background-size:100%;
     background-attachment: fixed;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h2, h3, h4, h5 {
  font-family: 'Lobster', Georgia, Times, serif;
  line-height: 100px;
- color: white;
+ color: grey;
+}
+
+h1, h6 { 
+   font-family: 'Lobster', Georgia, Times, serif;
+ line-height: 100px;
+    text-shadow: 1px 1px 1px #fbb4ae;
+    color: white;
 }
 p, div {
  font-family: 'Cabin', Helvetica, Arial, sans-serif;
  font-size: 15px;
  line-height: 25px;
+ color:grey;
+}
+
+.footer p {
+  color:white;
 }
 
 .container-narrow {
@@ -45,7 +57,7 @@ p, div {
       height:100%;
       width:100%;
   background-image: url("../../doc/cream_dust.png");
-  opacity:0.9;
+  opacity:0.95;
 }
 
 .footer {
@@ -70,11 +82,10 @@ p, div {
 
 }
 .container {
-  max-width: 1200px;
-
+/*  max-width: 1200px;
+*/
   width:100%;
-/*  margin-left:0px;
-  margin-right:0px;*/
+
 }
 .row{
   width:100%;
@@ -83,22 +94,20 @@ p, div {
 #container1 { 
 	position: relative; 
 	width: 500px;
-	height:490px;
+	height: 500px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 2.5%;
 	margin-bottom: 2.5%;
 	background-color: transparent;
-/*	box-shadow: 1px 1px 1px 2px rgb(217, 217, 217);
-*/
 }
 
 #container2 {
 	position: relative; 
 	width: 480px;
 	height: 400px;
-/*	margin-left:0px;
-	margin-right: auto;*/
+	margin-left:auto;
+	margin-right: auto;
 	margin-top: 2.5%;
 	margin-bottom: 2.5%;
 	background-color: transparent;
@@ -108,8 +117,8 @@ p, div {
 	position: relative; 
 	width: 480px;
 	height: 400px;
-/*	margin-left: auto;
-	margin-right: 0px;*/
+	margin-left: auto;
+	margin-right: auto;
 	margin-top: 2.5%;
 	margin-bottom: 2.5%;
 	background-color: transparent;
@@ -147,43 +156,7 @@ p, div {
     height:100px;
 }
 
-/* The slider itself */
-.slider {
-    -webkit-appearance: none;  /* Override default CSS styles */
-    appearance: none;
-    width: 30%; /* Full-width */
-    height: 15px; /* Specified height */
-    background: #d3d3d3; /* Grey background */
-    outline: none; /* Remove outline */
-    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-    transition: opacity .2s;
-        	box-shadow: 1px 1px 1px 2px rgb(105,105,105);
-}
 
-/* Mouse-over effects */
-.slider:hover {
-    opacity: 1; /* Fully shown on mouse-over */
-}
-
-/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
-.slider::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
-    appearance: none;
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: #ff9999; /* Green background */
-    cursor: pointer; /* Cursor on hover */
-    	box-shadow: 1px 1px 1px 2px rgb(105,105,105);
-    	 border-radius: 5px;
-}
-
-.slider::-moz-range-thumb {
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: #ffcccc; /* Green background */
-    cursor: pointer; /* Cursor on hover */
-}
 
 .dropdown {
 	margin-top:1%;
@@ -255,7 +228,7 @@ path:hover {
 	margin-left: 20px;
 }
 .bar {
-  fill-opacity: 0.8;
+  fill-opacity: 0.7;
 }
 .bar.left {
   fill: #b5f2d2; 
@@ -314,3 +287,58 @@ path:hover {
   display:none;
 }
 
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*#infoCol {
+   -webkit-columns: 3 150px;
+  -moz-columns: 3 150px;
+  columns: 3 150px;
+  -webkit-column-gap: 5em;
+  -moz-column-gap: 5em;
+  column-gap: 5em;
+  -webkit-column-rule-width: 4px;
+  -moz-column-rule-width: 4px;
+  column-rule-width: 4px;
+  -webkit-column-rule-color: grey;
+  -moz-column-rule-color: grey;
+  column-rule-color: grey;
+  margin: 2em auto 7em;
+    -webkit-column-rule-style: dotted;
+  -moz-column-rule-style: dotted;
+  column-rule-style: dotted;
+}*/

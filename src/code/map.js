@@ -8,11 +8,10 @@
 var mapSvg, path, map, mapsubtitle, projection,format;
 
 // creates a map
-function createMap(nld, data, year){
+function createMap(nld, data, year, currentProvince, topic, titel, subtitel){
 
 	var width = 420,
         height = 420;
-
 
     var format = d3.format(".3s")
 
@@ -45,21 +44,13 @@ function createMap(nld, data, year){
 
     projection.fitSize([width, height], nld);
 
-            // create tip
-    var toolTip = d3.select("#container1")
-        .append("div")
-        .attr("class", "tooltip hidden")
+   var tip = d3.tip()
+      .attr("class", "d3-tip")
+      .offset([-8, 0])
+      .html(d =>    "<strong>Province:</strong> <span style='color:#b5f2d2'>" + d.properties.name  + 
+        "</span></br><strong>Population:</strong> <span style='color:#b5f2d2'>" + format(getPopulation(d.properties.name, data)) + "</span>");
 
-        // create tooltip
-    function createTooltip(d) {
-        var population = getPopulation(d.properties.name, data)
-
-        var hoverInfo = d3.mouse(mapSvg.node())
-        .map( function(d) { return parseInt(d); } );
-         toolTip.classed("hidden", false)
-        .attr("style", "left:"+(hoverInfo[0]+10)+"px;top:"+(hoverInfo[1]+55)+"px")
-        .html("Province: "+ d.properties.name + "</br> Population: " + format(population))
-    }
+      mapSvg.call(tip);
 
 var defs = mapSvg.append('svg:defs');
 
@@ -76,7 +67,6 @@ defs.append("svg:pattern")
 
 
          d3.select('#stripes')
-         // .append("path")
       .attr('d', 'M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2')
       .attr('stroke', '#010101')
       .attr('stroke-width', 0.3)
@@ -92,11 +82,8 @@ defs.append("svg:pattern")
     .attr("stroke-width", "1px")
     .attr("id", function(d) {return d.properties.name})
 
-        .on("mousemove",createTooltip)
-        .on("mouseout",  function(d,i) {
-        toolTip.classed("hidden", true);
-        })
-
+        .on("mousemove",tip.show)
+        .on("mouseout", tip.hide)
         .on("click", function(d){
             mapSvg.select("#"+currentProvince).style("fill", function(d) {
                 population = getPopulation(currentProvince, data)
@@ -146,13 +133,13 @@ defs.append("svg:pattern")
     .append("stop")
     .attr("offset", "0%")
     .attr("stop-color", "#008545")
-    .attr("stop-opacity", 0.8);
+    .attr("stop-opacity", 1);
 
     legend
     .append("stop")
     .attr("offset", "100%")
     .attr("stop-color", "#b5f2d2")
-    .attr("stop-opacity", 0.8);
+    .attr("stop-opacity", 1);
 
     key
     .append("rect")
@@ -186,7 +173,7 @@ defs.append("svg:pattern")
 
 }
 
-function updateMap(nld, data, year){
+function updateMap(nld, data, year, currentProvince, topic, titel, subtitel){
 
     maptitle
     .text("Population in the Netherlands in the year " + year);

@@ -1,24 +1,25 @@
-var currentProvince = "Nederland"
-var topic = "income"
-var titel = "Yearly income"
-var subtitel = "x 1000 euro"
 
 window.onload = function() {
 
+	var currentProvince = "Nederland";
+	var topic = "income";
+	var titel = "Yearly income";
+	var subtitel = "x 1000 euro";
+	var year = "2006";
 	
-	var data2006 = "src/data/data_2006.json";
-	var data2007 = "src/data/data_2007.json";
-	var data2008 = "src/data/data_2008.json";
-	var data2009 = "src/data/data_2009.json";
-	var data2010 = "src/data/data_2010.json";
-	var data2011 = "src/data/data_2011.json";
-	var data2012 = "src/data/data_2012.json";
-	var data2013 = "src/data/data_2013.json";
-	var data2014 = "src/data/data_2014.json";
-	var data2015 = "src/data/data_2015.json";
-	var nld = "src/data/nld.json"
+	// Retrieve data
+	var data2006 = "../data/data_2006.json";
+	var data2007 = "../data/data_2007.json";
+	var data2008 = "../data/data_2008.json";
+	var data2009 = "../data/data_2009.json";
+	var data2010 = "../data/data_2010.json";
+	var data2011 = "../data/data_2011.json";
+	var data2012 = "../data/data_2012.json";
+	var data2013 = "../data/data_2013.json";
+	var data2014 = "../data/data_2014.json";
+	var data2015 = "../data/data_2015.json";
+	var nld = "../data/nld.json";
 
-	// retrieve data
 	d3.queue()
 		.defer(d3.json, data2006)
 		.defer(d3.json, data2007)
@@ -33,119 +34,167 @@ window.onload = function() {
 		.defer(d3.json, nld)
 		.await(callback);
 	
-	// create visualizations
 	function callback(error, data2006, data2007, data2008, data2009, data2010, data2011, data2012, data2013, data2014, data2015, nld) {
-	if (error) throw error;
+		if (error) throw error;
 
+		// Create object with data per year
+	  	var years = {
+	  		"2006" : data2006.data_2006,
+	  		"2007" : data2007.data_2007,
+	  		"2008" : data2008.data_2008,
+	  		"2009" : data2009.data_2009,
+	  		"2010" : data2010.data_2010,
+	  		"2011" : data2011.data_2011,
+	  		"2012" : data2012.data_2012,
+	  		"2013" : data2013.data_2013,
+	  		"2014" : data2014.data_2014,
+	  		"2015" : data2015.data_2015,
+	  	};
 
-  	var years = {
-  		"2006": data2006.data_2006,
-  		"2007": data2007.data_2007,
-  		"2008": data2008.data_2008,
-  		"2009": data2009.data_2009,
-  		"2010": data2010.data_2010,
-  		"2011": data2011.data_2011,
-  		"2012": data2012.data_2012,
-  		"2013": data2013.data_2013,
-  		"2014": data2014.data_2014,
-  		"2015": data2015.data_2015,
-  	}
+	  	// Change values causes of death, education and social security
+	  	for (var key in years){
+	  		changeDataValues(years[key]);
+	  	}
 
-  	for (var key in years){
-  		changeDataValues(years[key])
-  	}
+		// Create slider
+	  	var sliderData = d3.range(0, 10).map(function (d) { return new Date(2006 + d, 10, 3); });
 
-	// console.log(data2006)
-	datatest = data2010.data_2010
+		var slider = d3.sliderHorizontal()
+		    .min(d3.min(sliderData))
+		    .max(d3.max(sliderData))
+		    .step(1000 * 60 * 60 * 24 * 365)
+		    .width(400)
+		    .tickFormat(d3.timeFormat('%Y'))
+		    .tickValues(sliderData)
+		    .on('onchange', val => {
+		      d3.select("p#slidervalue").text(d3.timeFormat('%Y')(val));
+		      changeYear(val);
+		    });
 
-	createMap(nld, datatest, "2010");
-	updateMap(nld, datatest, "2010")
-	var provinceDataOne = getProvinceData(datatest, "Limburg")
-	var provinceDataTwo = getProvinceData(datatest, currentProvince)
-	createPyramid(provinceDataOne, provinceDataTwo, currentProvince);
+	  	var g = d3.select("div#slider").append("svg")
+		    .attr("width", 500)
+		    .attr("height", 100)
+		    .append("g")
+		    .attr("transform", "translate(30,30)")
+		    .style('fill', "#fbb4ae");
 
-	createBarchart()
-	updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, titel, subtitel, "yes")	
+	  	g.call(slider);
 
-	$("#scrollUp").click(function() {
-    $('html, body').animate({
-        scrollTop: $("#container1").offset().top
-    }, 1000);
-});
+	  	// Initial data per province
+	  	var provinceDataOne = getProvinceData(years[year], "Limburg");
+		var provinceDataTwo = getProvinceData(years[year], currentProvince);
 
-		$("#scrollDown").click(function() {
-    $('html, body').animate({
-        scrollTop: $("#container1").offset().top
-    }, 1000);
-});
+	  	// Create initial visualizations
+		createMap(nld, years[year], year, currentProvince, topic, titel, subtitel);
+		updateMap(nld, years[year], year, currentProvince, topic, titel, subtitel);
+		createPyramid(provinceDataOne, provinceDataTwo, currentProvince);
+		createBarchart();
+		updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, titel, subtitel);
 
-		$("path").click(function() {
-    $('html, body').animate({
-        scrollTop: $(".slidecontainer").offset().top
-    }, 1000);
-});
-var slider = document.getElementById("myRange");
-var output = document.getElementById("year");
-output.innerHTML = slider.value;
+		// Change visualizations when year is changed
+		function changeYear(val){
 
-slider.oninput = function() {
-	year = this.value
-  	output.innerHTML = year
+			year = val.getFullYear();
+		  	var data = years[year];
+		  	provinceDataOne = getProvinceData(data, "Limburg");
+		  	provinceDataTwo = getProvinceData(data, currentProvince);
+		  	
+		  	updateMap(nld, data, year, currentProvince, topic, titel, subtitel);
+		  	updatePyramid(provinceDataOne, provinceDataTwo, currentProvince);
+		  	updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, titel, subtitel);
+		}
 
- 
-  	data = years[year]
-  	// document.getElementById("mapsvg").selectAll("path").remove();
-  	updateMap(nld, data, year)
+	// Change barchart when topic is chosen
+	function changeTopic(){
 
+		topic = this.getAttribute("id");
 
-  	provinceDataOne = getProvinceData(data, "Limburg")
-  	provinceDataTwo = getProvinceData(data, currentProvince)
-  	updatePyramid(provinceDataOne, provinceDataTwo, currentProvince)
-  	updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, titel, subtitel, "no")
+		// Get correct title and subtitle
+		if (topic === "income"){
+			titel = "Yearly income";
+			subtitel = "x 1000 euro";
+		}
+		else if (topic === "birthsanddeaths"){
+			titel = "Amount of births and deaths";
+			subtitel = "Per 1000 people";
+		}
+		else if (topic === "causesofdeath"){
+			titel = "Causes of Death";
+			subtitel = "Per 1000 people";
+		}
+		else if (topic === "migration"){
+			titel = "Migration";
+			subtitel = "Percentages";
+		}
+		else if (topic === "socialsecurity"){
+			titel = "Social Security";
+			subtitel = "Per 1000 people";
+		}
+		else if (topic === "education")
+		{
+			titel = "Highest level of Education";
+			subtitel =  "Per 1000 people";
+		}
 
-
-}
-
-
-function changeTopic(){
-
-	topic = this.getAttribute("id");
-
-	// titles
-	if (topic === "income"){
-		titel = "Yearly income"
-		subtitel = "x 1000 euro"
+		// Get correct data and update chart
+		var data = years[year]
+		var provinceDataTwo = getProvinceData(data, currentProvince)
+		updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, titel, subtitel)	
 	}
-	else if (topic === "birthsanddeaths"){
-		titel = "Amount of births and deaths"
-		subtitel = "Per 1000 people"
-	}
-	else if (topic === "causesofdeath"){
-		titel = "Causes of Death"
-		subtitel = "Per 1000 people"
-	}
-	else if (topic === "migration"){
-		titel = "Migration"
-		subtitel = "Percentages"
-	}
-	else if (topic === "socialsecurity"){
-		titel = "Social Security"
-		subtitel = "Per 1000 people"
-	}
-	else if (topic === "education")
-	{
-		titel = "Highest level of Education"
-		subtitel =  "Per 1000 people"
-	}
-	var provinceDataTwo = getProvinceData(datatest, currentProvince)
-	updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, titel, subtitel, "yes")	
-}
 
-	document.getElementById("birthsanddeaths").onclick=changeTopic;
-	document.getElementById("causesofdeath").onclick=changeTopic;
-	document.getElementById("income").onclick=changeTopic;
-	document.getElementById("socialsecurity").onclick=changeTopic;
+		document.getElementById("birthsanddeaths").onclick=changeTopic;
+		document.getElementById("causesofdeath").onclick=changeTopic;
+		document.getElementById("income").onclick=changeTopic;
+		document.getElementById("socialsecurity").onclick=changeTopic;
 		document.getElementById("education").onclick=changeTopic;
-				document.getElementById("migration").onclick=changeTopic;
+		document.getElementById("migration").onclick=changeTopic;
+
+		// Scroll functions
+		$("#scrollUp").click(function() {
+		    $('html, body').animate({
+		        scrollTop: $("#container1").offset().top
+		    }, 1000);
+		});
+
+			$("#scrollDown").click(function() {
+		    $('html, body').animate({
+		        scrollTop: $("#container1").offset().top
+		    }, 1000);
+		});
+
+			$("path").click(function() {
+		    $('html, body').animate({
+		        scrollTop: $("#slidercol").offset().top
+		    }, 1000);
+		});
+
+	// Get the modal
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("infoButton");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 }
 }
+	}
+
+

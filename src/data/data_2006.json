@@ -40,7 +40,7 @@
         "causesofdeath": {
             "growths": "40563",
             "heart": "41720",
-            "respiratory": "13731",
+            "respiratory":"13731",
             "external": "5354",
             "other": "34004"
         },

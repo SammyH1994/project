@@ -4,9 +4,9 @@
 
   var marginBar = {top: 20, right: 100, bottom: 30, left: 30},
     widthBar = 420 - marginBar.left - marginBar.right,
-    heightBar = 300 - marginBar.top - marginBar.bottom;
+    heightBar = 290 - marginBar.top - marginBar.bottom;
 
-var svg, x0, x1, y, color, title;
+var svg, x0, x1, y, color, title, yText;
 
 function createBarchart(){
 
@@ -29,9 +29,8 @@ color = d3.scaleOrdinal()
     var titleSvg = d3.select("#container3")
     .append('svg')
     .attr("width", widthBar)
-    .attr("height", 50)
+    .attr("height", 60)
     .append('g')
-    // .attr('transform','translate(10,10)');
 
 title = titleSvg
 .append('g')
@@ -73,23 +72,16 @@ title
       .attr("class", "y axis")
       .style('opacity','0');
 
-      svg.append("text")
+  yText = svg.append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
       .style("font-size", "10px")
-      .text("Value");
-
-
-
-
-
-
 
 }
 
-function updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, bartitel, barsubtitel, updateY){
+function updateBarchart(provinceDataOne, provinceDataTwo, currentProvince, topic, bartitel, barsubtitel){
 // data
 var barData = [provinceDataOne, provinceDataTwo];
 
@@ -100,7 +92,9 @@ var keys = Object.keys(barData[0][topic])
 var emptyValues = 0
 for (var i = 0; i < barData.length; i++){
       var dates = barData[i][topic]
+      console.log(dates)
       for (var j = 0; j < Object.keys(barData[0][topic]).length; j++){
+        console.log(dates[keys[j]])
         if (dates[keys[j]] === "0.00"){
           emptyValues = 1
         }
@@ -111,7 +105,11 @@ if (emptyValues === 1){
   document.getElementById("nodata").style.display =  "block";
 }
 
+
 else {
+
+    document.getElementById("nodata").style.display =  "none";
+
   title.selectAll("#bartitel")
   .text(bartitel);
 
@@ -143,11 +141,14 @@ barData.forEach(function(d) {
       svg.select(".x")
       .call(xAxis);
 
+
+// // Only update Y axis when dropdown is used, when year is chosen do not change axis for easier comparison
 // if (updateY == "yes"){
 
-
-
-  y.domain([0, d3.max(barData, function(d) {return d3.max(d.values, function(d) {return d.value;}); })]);
+console.log(barData)
+  // Y domain has to be the max of all years to ensure all data fits
+  y.domain([0, d3.max(barData, function(d) {return d3.max(d.values, function(d) {return d.value;}); })])
+  .nice();
 
 
   var yAxis = d3.axisLeft()
@@ -215,6 +216,10 @@ barData.forEach(function(d) {
   .remove();
 
   svg.call(tip);
+
+
+  yText
+      .text(barsubtitel);
 
  svg.selectAll(".legend")
       .remove();
