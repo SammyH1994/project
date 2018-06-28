@@ -79,7 +79,6 @@ Still have to think if I will add something else, but not sure if there is time 
 - Worked on adding an alert if there is missing data in the bar chart --> only works the first time, need to check this
 
 To do: 
-- Add check missing data for other charts
 - Check interactions between slider/topic/clicking on map: have a feeling this sometimes does not work correctly
 - Styling of site
 - Improve code
@@ -100,3 +99,11 @@ Had an issue with changing the border color on hover, because the path is drawn 
 ### Day 2
 - Worked on styling of the page: backgrounds, headers, fonts etc
 - Worked on the map hovering: on click stripes on top of the color now works. Still have to figure out what to do on hover. 
+
+### Day 3
+- Worked on styling
+- Worked on code
+- Decided not to have a map hover effect, just the tooltip, because changing the color obscures the values and borders do not work nicely
+- Worked on an info pop up button for barchart & pyramid
+- Fixed issues with alert
+- Changed slider
