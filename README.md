@@ -8,6 +8,8 @@ Minor Programmeren UvA 2018
 
 [Demonstration video (in Dutch)](https://youtu.be/EGjwFnKRQTs)
 
+Note: The video was created using a different version of the website, in which a bug with the interactions was fixed. This version was not submitted for grading as it was changed after the deadline. To see the second version with which the video was made, click [this link](https://SammyH1994.github.io/project_working)
+
 ### Problem Statement
 Recently, it became known that the number of baby's born with a birth defect is alarmingly higher in Limburg than in any other province of the Netherlands: 3.84% in Limburg compared to the national average of 2.84% ([Source](https://www.limburger.nl/cnt/dmf20180524_00062550/alarmerend-meer-baby-s-met-afwijkingen-in-limburg)). 
 
